@@ -138,18 +138,20 @@
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 0.12em;
-    text-transform: uppercase;
+    text-transform: normal;
     color: var(--muted);
-    margin-bottom: 70px;
+    margin-bottom: 86px;
     display: flex;
     align-items: center;
     gap: 12px;
+    font-family: math;
   }
  .hero-eyebrow span {
   color: #000;
   font-weight: bold;
   clear: both;
   display: contents;
+    text-transform: uppercase;
  }
 
 
@@ -491,7 +493,10 @@
     transition: padding-left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .service-item:hover { padding-left: 16px; }
+  .service-item:hover { 
+    padding-left: 16px; 
+    transform: translateY(-6px);
+  }
 
   .service-num {
     font-family: var(--serif);
@@ -765,17 +770,16 @@
 
 
 
-
-    position: absolute;
-    letter-spacing: -3px;
+  position: absolute;
+    letter-spacing: 0px;
     font-size: 90px;
-    line-height: 70px;
+    line-height: 72px;
     font-weight: 900;
-    right: -20px;
+    right: -39px;
     font-family: system-ui;
     top: 220px;
-    color: #000000;
-    font-family: "Saira", sans-serif;
+    color: #00000024;
+    font-family: revert;
   }
   .homescreen001{
     width: 100%;
@@ -812,6 +816,61 @@
     opacity: 0.31;
 }
 
+/* ---- Work card overlay ---- */
+.work-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 13, 12, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
+  padding: 32px;
+}
+
+.work-card:hover .work-card-overlay {
+  opacity: 1;
+}
+
+.overlay-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.overlay-details li {
+  font-size: 18px;
+  font-family: math;
+  font-weight: 300;
+  color: rgba(250, 250, 248, 0.88);
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.overlay-details li span{
+  font-size: 22px;
+  background: white;
+  color: #000;
+  font-weight: 900;
+  border-radius: 2px;
+  padding: 1px;
+}
+
+.overlay-details li::before {
+  content: '-';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  color: #c8b89a;
+  font-size: 16px;
+}
+
 </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -845,8 +904,9 @@
 
 <!-- Hero -->
 <section id="hero">
-  <p class="hero-eyebrow"><span>Lead Product Designer </span><br>
-Crafting Meaningful Digital Experiences</p>
+  <p class="hero-eyebrow"><span>Lead Product Designer - UX/UI</span><br>
+   
+</p>
   <h4>PORT<br>
       FOLIO
   </h4>
@@ -893,9 +953,17 @@ Crafting Meaningful Digital Experiences</p>
     <div class="work-card" data-index="0">
       <div class="work-card-inner">
         <img src="assets/homescreen.png" class="homescreen001">
+        <div class="work-card-overlay">
+          <ul class="overlay-details">
+            <li>Redesigned <span>120+</span> government services across 6 sectors</li>
+            <li>Used by <span>1M+</span> residents annually</li>
+            <li>Reduced service completion time by <span>35%</span></li>
+            <li>Bilingual Arabic & English design system</li>
+          </ul>
+        </div>
         <div class="work-card-info">
           <p class="work-card-tag">Public Services · 2025</p>
-          <h3 class="work-card-title">Sharjah Municiaplity Service Portal</h3>
+          <h3 class="work-card-title">Sharjah Municipality Service Portal</h3>
         </div>
         <div class="work-card-arrow"><a href="https://shjmun.gov.ae">↗</a></div>
       </div>
@@ -904,6 +972,15 @@ Crafting Meaningful Digital Experiences</p>
     <div class="work-card" data-index="1">
       <div class="work-card-inner">
         <img src="assets/dxbPolice.png" class="homescreen002">
+
+        <div class="work-card-overlay">
+          <ul class="overlay-details">
+            <li>Designed key workflows for checking, updating, and adding case reports, ensuring smoother daily operations.</li>
+            <li>Delivered a modern, structured design system aligned with Dubai Police’s digital standards.</li>
+            <li>Prototype testing for Dubai Police eCrime Portal with  <span>1,400+</span> active users helped simplify case reporting and internal workflows.</li>
+            
+          </ul>
+        </div>
         <div class="work-card-info">
           <p class="work-card-tag">City Policing · 2023</p>
           <h3 class="work-card-title">Dubai Police</h3>
@@ -915,6 +992,15 @@ Crafting Meaningful Digital Experiences</p>
     <div class="work-card" data-index="2">
       <div class="work-card-inner">
         <img  src="assets/parkin.png" class="homescreen003">
+
+        <div class="work-card-overlay">
+          <ul class="overlay-details">
+            
+            <li>APP Daily Usage <span>300,000</span> </li>
+            <li>APP Monthly Usage <span>8,400,000</span></li>
+            <li>It allows residents, visitors, and businesses to conveniently pay for parking and manage subscriptions directly from their smartphones.</li>
+          </ul>
+        </div>
         <div class="work-card-info">
           <p class="work-card-tag">Parking App · 2023</p>
           <h3 class="work-card-title">Mawqef </h3>
@@ -927,6 +1013,14 @@ Crafting Meaningful Digital Experiences</p>
  <div class="work-card" data-index="1">
       <div class="work-card-inner">
         <img src="assets/shaikha.png" class="homescreen002">
+
+        <div class="work-card-overlay">
+          <ul class="overlay-details">
+            <li>Designed and developed the official campaign website for Shaikha Nasser Al Nowais, candidate for Secretary-General, UN Tourism.</li>
+            <li>Delivered a multilingual experience in five languages, ensuring accessibility and engagement for a global audience.</li>
+            <li>Focused on a clean, responsive design that highlights the candidate’s vision, initiatives, and key messages with clarity and impact.</li>
+          </ul>
+        </div>
         <div class="work-card-info">
           <p class="work-card-tag">UN Tourism Candidate · 2024</p>
           <h3 class="work-card-title">Shaikha Nasser</h3>
@@ -938,6 +1032,15 @@ Crafting Meaningful Digital Experiences</p>
     <div class="work-card" data-index="2">
       <div class="work-card-inner">
         <img  src="assets/sastain.png" class="homescreen002">
+
+        <div class="work-card-overlay">
+          <ul class="overlay-details">
+            <li>In June 2023, VCM auctioned over <span>2.2 Million</span> tonnes of carbon credits</li>
+            <li>Focused on clarity, transparency, and trust, ensuring complex financial and environmental data is presented accessibly.</li>
+            <li>Supported VCM’s mission to drive global climate action by enabling transparent participation in carbon markets.</li>
+            
+          </ul>
+        </div>
         <div class="work-card-info">
           <p class="work-card-tag">Sustainable Environment · 2023</p>
           <h3 class="work-card-title">VCM - Saudi Arabia</h3>
