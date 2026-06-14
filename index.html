@@ -680,12 +680,12 @@
     position: fixed;
     width: 36px;
     height: 36px;
-    border: 8px solid rgba(14,13,12,0.25);
+    border: 2px solid rgba(14,13,12,0.25);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
-    transition: width 0.5s, height 0.5s, border-color 0.3s;
+    transition: width 0.2s, height 0.2s, border-color 0.3s;
   }
 
   body:has(.work-card:hover) #cursor { width: 60px; height: 60px; background: #333; }
@@ -761,6 +761,11 @@
     .marquee-track { animation: none !important; }
   }
   h4{
+
+
+
+
+
     position: absolute;
     letter-spacing: -3px;
     font-size: 90px;
@@ -787,7 +792,25 @@
     
   }
 
+.mine{
+  
+  display: none;
 
+
+
+
+    position: absolute;
+    top: 0%;
+    right: -43%;
+    /* transform: translate(-50%, -50%); */
+    color: white;
+    mix-blend-mode: multiply;
+    opacity: 0.60;
+}
+.mine img{
+ width: 81%;
+    opacity: 0.31;
+}
 
 </style>
 </head>
@@ -818,6 +841,7 @@ Crafting Meaningful Digital Experiences</p>
   <h4>PORT<br>
       FOLIO
   </h4>
+  <div class="mine"><img  src="assets/mine.png"></div>
   <h1 class="hero-title">
     <span class="word-line"><span class="reveal-word">Product design</span></span>
     <span class="word-line"><span class="reveal-word">for <em> humans</em></span>,</span>
@@ -1083,15 +1107,15 @@ bgRenderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 bgRenderer.setSize(innerWidth, innerHeight);
 
 const bgScene = new THREE.Scene();
-const bgCamera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 100);
+const bgCamera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.9, 100);
 bgCamera.position.z = 5;
 
 const particleCount = 120;
-const positions = new Float32Array(particleCount * 3);
+const positions = new Float32Array(particleCount * 30);
 const sizes = new Float32Array(particleCount);
 
 for (let i = 0; i < particleCount; i++) {
-  positions[i * 3] = (Math.random() - 0.5) * 20;
+  positions[i * 3] = (Math.random() - 0.9) * 20;
   positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
   positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
   sizes[i] = Math.random() * 3 + 1;
@@ -1103,9 +1127,9 @@ pgeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
 const pmat = new THREE.PointsMaterial({
   color: 0xa99577,
-  size: 0.16,
+  size: 0.36,
   transparent: true,
-  opacity: 0.3,
+  opacity: 0.24,
   sizeAttenuation: true
 });
 
@@ -1122,7 +1146,7 @@ const shapes = [
   new THREE.CircleGeometry(200, 64),
 ];
 
-const lineMat = new THREE.MeshBasicMaterial({ color: 0xd76d27, wireframe: true, transparent: true, opacity: 0.09 });
+const lineMat = new THREE.MeshBasicMaterial({ color: 0xdcccccc, wireframe: true, transparent: true, opacity: 0.5 });
 
 shapes.forEach((geo, i) => {
   const mesh = new THREE.Mesh(geo, lineMat.clone());
