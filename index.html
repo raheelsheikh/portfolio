@@ -710,12 +710,20 @@
 
   /* ---- Mobile ---- */
   @media (max-width: 768px) {
+  .hero-eyebrow{
+        margin-bottom: 100px !important;
+  }
+  h4{
+    display: none;
+  }
+
+
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
     .nav-cta { display: none; }
     .nav-hamburger { display: flex; }
 
-    #hero { padding: 0 24px 60px; }
+    #hero { padding: 60px 24px 60px; }
     .hero-title { font-size: clamp(48px, 14vw, 80px); }
     .hero-bottom { flex-direction: column; gap: 28px; align-items: flex-start; }
     .hero-scroll { flex-direction: row; }
