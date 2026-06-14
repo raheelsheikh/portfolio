@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mira Solano — UX/UI Designer</title>
+<title>Raheel Sheikh — Lead Product (UX/UI) Designer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -140,7 +140,7 @@
     letter-spacing: 0.12em;
     text-transform: normal;
     color: var(--muted);
-    margin-bottom: 86px;
+    margin-bottom: 54px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -905,6 +905,8 @@
 <!-- Hero -->
 <section id="hero">
   <p class="hero-eyebrow"><span>Lead Product Designer - UX/UI</span><br>
+    Designing digital products that transform<br>
+complex systems into intuitive experiences.
    
 </p>
   <h4>PORT<br>
@@ -917,7 +919,7 @@
     <span class="word-line"><span class="reveal-word">not screens.</span></span>
   </h1>
   <div class="hero-bottom">
-    <p class="hero-desc">Eight+ years designing digital products that actually ship. I work across the full product lifecycle, from early discovery and user research to systems running at government scale. My work spans infrastructure, fintech, healthcare, education, and sustainability, with a focus on making complex services simpler for the people who use them every day.</p>
+    <p class="hero-desc">12+ years designing digital products that actually ship. I work across the full product lifecycle, from early discovery and user research to systems running at government scale. My work spans infrastructure, fintech, healthcare, education, and sustainability, with a focus on making complex services simpler for the people who use them every day.</p>
     <div class="hero-scroll">
       <div class="scroll-line" id="scroll-line"></div>
       Scroll
@@ -947,7 +949,7 @@
 
 <!-- Work -->
 <section id="work">
-  <p class="section-label">Selected work</p>
+  <p class="section-label">Projects I'm most proud of</p>
   <div class="work-grid">
 
     <div class="work-card" data-index="0">
@@ -1182,7 +1184,7 @@ Over the past 12+ years, I've helped shape products used by millions across fina
   <ul class="footer-links">
     <li><a href="https://www.linkedin.com/in/raheelsheikh/">LinkedIn</a></li>
     <li><a href="https://www.behance.net/s4raheel">Behance</a></li>
-    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Read.cv</a></li>
+    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Resume</a></li>
   </ul>
   <div class="footer-right">Available for projects</div>
 </footer>
@@ -1215,19 +1217,19 @@ tickFollower();
 // ---- Three.js background ----
 const bgCanvas = document.getElementById('bg-canvas');
 const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
-bgRenderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+bgRenderer.setPixelRatio(Math.min(devicePixelRatio, 3));
 bgRenderer.setSize(innerWidth, innerHeight);
 
 const bgScene = new THREE.Scene();
-const bgCamera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.9, 100);
-bgCamera.position.z = 5;
+const bgCamera = new THREE.PerspectiveCamera(140, innerWidth / innerHeight, 0.1, 100);
+bgCamera.position.z = 9;
 
 const particleCount = 120;
-const positions = new Float32Array(particleCount * 30);
+const positions = new Float32Array(particleCount * 10);
 const sizes = new Float32Array(particleCount);
 
 for (let i = 0; i < particleCount; i++) {
-  positions[i * 3] = (Math.random() - 0.9) * 20;
+  positions[i * 3] = (Math.random() - 0.9) * 80;
   positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
   positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
   sizes[i] = Math.random() * 3 + 1;
@@ -1235,13 +1237,13 @@ for (let i = 0; i < particleCount; i++) {
 
 const pgeo = new THREE.BufferGeometry();
 pgeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-pgeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+pgeo.setAttribute('size', new THREE.BufferAttribute(sizes, 3));
 
 const pmat = new THREE.PointsMaterial({
-  color: 0xa99577,
-  size: 0.36,
+  color: 0x333333,
+  size: 0.46,
   transparent: true,
-  opacity: 0.24,
+  opacity: 0.14,
   sizeAttenuation: true
 });
 
