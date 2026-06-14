@@ -140,7 +140,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 46px;
+    margin-bottom: 70px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -227,7 +227,7 @@
     border-bottom: 1px solid var(--line);
     padding: 16px 0;
     /*background: #fffcf4;*/
-    background: linear-gradient(45deg, #faf8f0, #e4e8e1);
+    background: linear-gradient(45deg, #fff, #eee);
   }
 
   .marquee-track {
@@ -254,7 +254,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--accent);
+    background: #666;
     flex-shrink: 0;
   }
 
@@ -680,7 +680,7 @@
     position: fixed;
     width: 36px;
     height: 36px;
-    border: 1px solid rgba(14,13,12,0.25);
+    border: 8px solid rgba(14,13,12,0.25);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
@@ -688,7 +688,7 @@
     transition: width 0.5s, height 0.5s, border-color 0.3s;
   }
 
-  body:has(.work-card:hover) #cursor { width: 60px; height: 60px; background: var(--accent); }
+  body:has(.work-card:hover) #cursor { width: 60px; height: 60px; background: #333; }
   body:has(.work-card:hover) #cursor-follower { opacity: 0; }
 
   /* ---- Hamburger ---- */
