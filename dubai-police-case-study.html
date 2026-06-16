@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai Police CID Portal — Case Study · Raheel Sheikh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/raheel.png">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --ink: #0e0d0c;
+  --ink2: #2a2826;
+  --muted: #8a8680;
+  --accent: #7b9eb8;
+  --accent-dark: #1e3a52;
+  --accent-light: #eaf1f7;
+  --line: rgba(14,13,12,0.10);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: math;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* HERO */
+.cs-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 48px;
+  background: #0e0d0c;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  filter: grayscale(60%) blur(1px);
+}
+
+/* Subtle grid overlay — nod to data-heavy interfaces */
+.cs-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(123,158,184,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,158,184,0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  z-index: 1;
+}
+
+.cs-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+  padding-top: 140px;
+}
+
+.cs-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 32px;
+  font-family: var(--sans);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: #ccc;
+}
+
+.cs-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 108px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  max-width: 900px;
+}
+
+.cs-hero-title em {
+  font-style: italic;
+  color: #ccc;
+}
+
+.cs-hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 32px;
+}
+
+.cs-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 6px;
+}
+
+.cs-meta-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+}
+
+/* STATS BAR */
+.cs-stats-bar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cs-stat {
+  padding: 36px 48px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.cs-stat:last-child { border-right: none; }
+
+.cs-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+}
+
+/* BODY */
+.cs-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.cs-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-section:last-child { border-bottom: none; }
+
+.cs-section-inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-section-label {
+  position: sticky;
+  top: 90px;
+}
+
+.cs-section-num {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.cs-section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.cs-section-title em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* TEXT */
+.cs-lead {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.cs-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.cs-text:last-child { margin-bottom: 0; }
+.cs-text strong { color: var(--ink); font-weight: 500; }
+
+.cs-pullquote {
+  border-left: 2px solid #ccc;
+  padding: 24px 32px;
+  margin: 40px 0;
+  background: #eef0f2;
+  border-radius: 0 8px 8px 0;
+}
+
+.cs-pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* CONTEXT BANNER */
+.cs-context-banner {
+  background: #0e0d0c;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.cs-context-item {}
+
+.cs-context-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 8px;
+}
+
+.cs-context-value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.80);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* CHALLENGE CARDS */
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-challenge-card {
+  background: #f2f0ec;
+  padding: 32px;
+}
+
+.cs-challenge-card.dark {
+  background: #0e0d0c;
+}
+.cs-challenge-card.dark .cs-challenge-title { color: var(--white); }
+.cs-challenge-card.dark .cs-challenge-body  { color: rgba(255,255,255,0.50); }
+.cs-challenge-card.dark .cs-challenge-icon  { color: #ccc; }
+
+.cs-challenge-icon {
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+
+.cs-challenge-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.cs-challenge-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* RESEARCH GRID */
+.cs-research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.cs-research-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.cs-research-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #0e0d0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: #ccc;
+}
+
+.cs-research-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cs-research-body {
+  font-size: 13px;
+  line-height: 1.70;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-research-finding {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: #ccc;
+  font-weight: 500;
+}
+
+/* PROCESS STEPS */
+.cs-process-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-step-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: #ccc;
+  padding-top: 3px;
+}
+
+.cs-step-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-step-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cs-step-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* BEFORE/AFTER COMPARISON */
+.cs-comparison {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.cs-comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f2f0ec;
+}
+
+.cs-comparison-col-label {
+  padding: 16px 28px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+
+.cs-comparison-col-label.before { color: var(--muted); }
+.cs-comparison-col-label.after  { color: #ccc; background: #f9fafa; }
+
+.cs-comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+
+.cs-comparison-cell {
+  padding: 20px 28px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-comparison-cell.after {
+  background: rgb(229 229 229 / 40%);
+  color: var(--ink2);
+}
+
+/* DECISION CARDS */
+.cs-decision {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-decision::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: #ccc;
+}
+
+.cs-decision-problem {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.cs-decision-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.cs-decision-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* OUTCOME GRID */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-outcome-card {
+  background: #f4f4f4;
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.cs-outcome-card.dark {
+  background: #0e0d0c;
+}
+.cs-outcome-card.dark .cs-outcome-num   { color: #ccc; }
+.cs-outcome-card.dark .cs-outcome-label { color: rgba(255,255,255,0.30); }
+.cs-outcome-card.dark .cs-outcome-desc  { color: rgba(255,255,255,0.55); }
+
+.cs-outcome-num {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-outcome-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.cs-outcome-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* LESSONS */
+.cs-lesson {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-lesson-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: 8px;
+}
+
+.cs-lesson-body {
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--muted);
+}
+
+.cs-lesson-body strong { color: var(--ink); font-weight: 500; }
+
+/* IMAGE BLOCK */
+.cs-image-block {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e6e6e6;
+}
+
+.cs-image-block img {
+  width: 100%;
+  display: block;
+}
+
+.cs-image-caption {
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* SENSITIVE DATA NOTE */
+.cs-sensitive-note {
+  background: rgba(123,158,184,0.08);
+  border: 1px solid rgba(123,158,184,0.20);
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin: 24px 0;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.cs-sensitive-icon {
+  color: #ccc;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* NEXT */
+.cs-next {
+  background: #0e0d0c;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.cs-next-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 24px;
+}
+
+.cs-next-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.cs-next-title em { font-style: italic; color: #ccc; }
+
+.cs-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.cs-next-link:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.38);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left { font-family: var(--serif); font-size: 15px; font-weight: 300; }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ink); }
+
+/* CURSOR */
+#cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+#cursor-follower {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid rgba(14,13,12,0.18); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+}
+
+.reveal { opacity: 0; transform: translateY(32px); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .cs-hero { padding: 0 24px; }
+  .cs-hero-title { font-size: clamp(38px, 11vw, 64px); }
+  .cs-stats-bar { grid-template-columns: 1fr 1fr; }
+  .cs-stat { padding: 24px; }
+  .cs-body { padding: 0 24px; }
+  .cs-section { padding: 64px 0; }
+  .cs-section-inner { grid-template-columns: 1fr; gap: 28px; }
+  .cs-section-label { position: static; }
+  .cs-challenge-grid { grid-template-columns: 1fr; }
+  .cs-research-grid  { grid-template-columns: 1fr; }
+  .cs-outcome-grid   { grid-template-columns: 1fr 1fr; }
+  .cs-context-banner { grid-template-columns: 1fr; gap: 20px; }
+  .cs-comparison-header, .cs-comparison-row { grid-template-columns: 1fr; }
+  .cs-comparison-col-label.before { display: none; }
+  .cs-comparison-cell { padding: 16px 20px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  #cursor, #cursor-follower { display: none; }
+  .cs-next { padding: 60px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Raheel Sheikh</a>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All projects
+  </a>
+</nav>
+
+<header class="cs-hero">
+  <img class="cs-hero-img" src="assets/dxbPolice.png" alt="">
+
+  <div class="cs-hero-content">
+    <div class="cs-hero-eyebrow">Internal Enterprise Tool · Law Enforcement · Arabic</div>
+
+    <h1 class="cs-hero-title">
+      Designing the system<br>
+      behind <em>Dubai's</em><br>
+      criminal intelligence.
+    </h1>
+    <div style="float: right;"><img src="assets/ecrime.png" width="190" ></div>
+
+    <div class="cs-hero-meta">
+      <div>
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">Dubai Police — CID</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">My Role</div>
+        <div class="cs-meta-value">Lead UX/UI Designer</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Year</div>
+        <div class="cs-meta-value">2023</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Scope</div>
+        <div class="cs-meta-value">Research · System Design · RTL UI · Handoff</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Language</div>
+        <div class="cs-meta-value">Arabic (RTL) only</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-stats-bar">
+    <div class="cs-stat">
+      <div class="cs-stat-num">1,400+</div>
+      <div class="cs-stat-label">Active portal users</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">8</div>
+      <div class="cs-stat-label">Core modules redesigned</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">0</div>
+      <div class="cs-stat-label">Original design documentation</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">100%</div>
+      <div class="cs-stat-label">Arabic RTL interface</div>
+    </div>
+  </div>
+</header>
+
+<main class="cs-body">
+
+  <!-- 01 OVERVIEW -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">01</div>
+        <h2 class="cs-section-title">Over<em>view</em></h2>
+      </div>
+      <div>
+        <p class="cs-lead">The Dubai Police Criminal Investigation Department uses an internal portal to manage some of the most sensitive operational data in the emirate: criminal records, wanted persons, active case files, prison status, impounded vehicles, and real-time case updates across departments.</p>
+
+        <p class="cs-text">The system had been built entirely by developers — no designer was ever involved. It worked technically. But it had never been designed. Years of feature additions had turned it into a patchwork of inconsistent screens with no visual logic, no hierarchy, and no clear workflow. Officers were navigating a system that slowed them down rather than helping them work.</p>
+
+        <p class="cs-text">My job was to change that without breaking the trust of users who had been relying on it for years. This was not a consumer app where users forgive rough edges. These are law enforcement professionals who need accurate information fast, and cannot afford to misread a screen or lose time in a broken flow.</p>
+
+        <div class="cs-sensitive-note">
+          <div class="cs-sensitive-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <span>Due to the confidential nature of this project, actual screenshots of the portal and its data cannot be shown. This case study describes the design process, decisions, and outcomes without exposing any sensitive law enforcement information.</span>
+        </div>
+
+        <div class="cs-context-banner reveal">
+          <div class="cs-context-item">
+            <div class="cs-context-label">What the portal handles</div>
+            <div class="cs-context-value">Criminal records, wanted persons lists, active case management, prison status, impounded vehicle tracking, inter-department case routing</div>
+          </div>
+          <div class="cs-context-item">
+            <div class="cs-context-label">Who uses it</div>
+            <div class="cs-context-value">CID investigators, case officers, department heads, and administrative staff across Dubai Police branches</div>
+          </div>
+          <div class="cs-context-item">
+            <div class="cs-context-label">The starting point</div>
+            <div class="cs-context-value">A functional but entirely undesigned system — built by developers, never touched by a designer, and visually frozen somewhere around 2013</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 THE PROBLEM -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">02</div>
+        <h2 class="cs-section-title">The<br><em>Problem</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">When developers build internal tools without design involvement, the structure of the system follows the structure of the database — not the mental model of the person using it. That is exactly what happened here. The portal was organized around how data was stored, not around how officers actually worked.</p>
+
+        <div class="cs-pullquote">
+          <p>"Officers had memorized workarounds. That is never a good sign. It means the tool failed and people compensated for it with habit."</p>
+        </div>
+
+        <div class="cs-challenge-grid reveal">
+          <div class="cs-challenge-card dark">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+            </div>
+            <div class="cs-challenge-title">No visual hierarchy anywhere</div>
+            <div class="cs-challenge-body">Every piece of data on every screen had the same visual weight. A case number looked the same as a suspect name, which looked the same as an officer note. Officers had to read everything to find what they needed, every time.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <div class="cs-challenge-title">Search that barely worked</div>
+            <div class="cs-challenge-body">Searching for a criminal record required knowing exact ID numbers. Partial name searches returned unpredictable results. Filtering across case status, date ranges, or officer assignments was either broken or non-existent.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="cs-challenge-title">Data scattered across modules</div>
+            <div class="cs-challenge-body">To get a full picture of a case — suspect record, current status, vehicle information, previous charges — an officer had to visit four or five separate screens with no connection between them and no way to view them together.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cs-challenge-title">No design system, no consistency</div>
+            <div class="cs-challenge-body">Buttons in one module looked nothing like buttons in another. Status indicators had different colors in different screens meaning different things. Every module had been built by a different developer at a different time with no shared visual language.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="cs-challenge-title">Arabic RTL done incorrectly</div>
+            <div class="cs-challenge-body">The system was Arabic-only, but the layout logic was built left-to-right and then mirrored with CSS. Icons pointed the wrong direction. Form validation messages appeared on the wrong side. Reading flow fought the interface.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="cs-challenge-title">No role-based interface differences</div>
+            <div class="cs-challenge-body">An administrative clerk saw the same interface as a senior investigator. There was no distinction between read access, edit access, and approval access — leading to both confusion and security concerns about what people could or could not do.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 RESEARCH -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">03</div>
+        <h2 class="cs-section-title">Research<br><em>Approach</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Redesigning a law enforcement tool without understanding how officers actually work is dangerous. You can easily optimize for the wrong thing. I spent the first phase entirely in research mode before touching Figma.</p>
+
+        <p class="cs-text">Access to users was restricted for security reasons, so I designed the research to work within those constraints — structured surveys, observed sessions where permitted, and deep-dive interviews with officers who volunteered. Every session was conducted in Arabic.</p>
+
+        <div class="cs-research-grid reveal">
+          <div class="cs-research-card">
+            <div class="cs-research-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="cs-research-title">Structured Survey</div>
+            <div class="cs-research-body">A structured survey was distributed to active portal users across three departments. Questions targeted daily workflow friction, most-used modules, common errors made, and confidence levels with current features.</div>
+            <div class="cs-research-finding">38 officers responded. 91% reported daily frustration with the search function. 78% said they kept personal notes to compensate for missing features.</div>
+          </div>
+
+          <div class="cs-research-card">
+            <div class="cs-research-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="cs-research-title">Observed Sessions</div>
+            <div class="cs-research-body">Sat with six officers during live work sessions, watching how they navigated the portal without directing them. No test tasks — real work. The goal was to see what they actually did, not what they said they did.</div>
+            <div class="cs-research-finding">Average of 4.2 unnecessary clicks observed per lookup task. Officers often opened multiple browser tabs to see related case data side by side.</div>
+          </div>
+
+          <div class="cs-research-card">
+            <div class="cs-research-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="cs-research-title">Depth Interviews</div>
+            <div class="cs-research-body">One-hour interviews with eight officers at different seniority levels — two investigators, three case officers, two department heads, and one system administrator. Conducted in Arabic, focused on mental models and decision-making process.</div>
+            <div class="cs-research-finding">Senior investigators wanted a case summary view at a glance. Junior officers prioritized clearer form guidance to avoid data entry errors.</div>
+          </div>
+        </div>
+
+        <p class="cs-text">The survey data gave us scale — it showed that the problems were not isolated complaints from a few vocal users. The observed sessions showed us what those problems looked like in practice. The interviews told us the mental models behind them and how different roles had different priorities.</p>
+
+        <div class="cs-pullquote">
+          <p>The most valuable finding was not what officers struggled with. It was what they had stopped trying to do — tasks they had quietly given up on because the system made them too hard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 DESIGN APPROACH -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">04</div>
+        <h2 class="cs-section-title">Design<br><em>Approach</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">The redesign had three non-negotiable principles from the start. First: do not change the data, only how it is presented. Officers trusted certain screens even when those screens were ugly — and any change that made data feel different would immediately lose their trust. Second: build an Arabic-first system, not an English system with Arabic text. Third: respect the severity of the context. This is not a productivity app. A visually heavy or playful interface would feel wrong to users who deal with serious content.</p>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">01</div>
+          <div>
+            <div class="cs-step-title">Define the information hierarchy</div>
+            <div class="cs-step-body">Working from research findings, I mapped every data point that appeared across the eight modules and ranked them by how frequently officers needed them and how critical they were. This hierarchy became the visual hierarchy — the most important information largest, most prominent, easiest to scan. Criminal record status, case number, and suspect name became the three things that were always visible first regardless of which module you were in.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Content Audit</span>
+              <span class="cs-step-tag">Priority Mapping</span>
+              <span class="cs-step-tag">Information Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">02</div>
+          <div>
+            <div class="cs-step-title">Build an Arabic-native design system</div>
+            <div class="cs-step-body">I started the design system from the Arabic perspective — not from English components then mirrored. Typography was set with a proper Arabic type scale using Cairo and Noto Kufi Arabic for different hierarchy levels. All spacing, alignment, and reading flow were built RTL from the ground up. Icons were audited for directionality — any icon implying direction (arrows, progress, navigation) was redrawn or replaced with directionally neutral alternatives. Every component was pressure-tested in full Arabic text strings before being finalized, because Arabic text is typically 20 to 30% longer than its English equivalent and breaks layouts that weren't designed with it in mind.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Arabic Typography</span>
+              <span class="cs-step-tag">RTL Component System</span>
+              <span class="cs-step-tag">Icon Audit</span>
+              <span class="cs-step-tag">Token Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">03</div>
+          <div>
+            <div class="cs-step-title">Redesign the dashboard as a command center</div>
+            <div class="cs-step-body">The existing dashboard was a list of module links. That was it. Officers arrived at the system with no sense of what needed attention. The redesigned dashboard became a genuine command center — summarizing active cases by status, flagging recently updated records, showing assigned tasks by priority, and surfacing wanted persons alerts in a persistent sidebar. The key design choice was density over whitespace: law enforcement professionals deal in data volume, and a sparse interface would have felt like it was hiding information from them.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Dashboard Design</span>
+              <span class="cs-step-tag">Data Density</span>
+              <span class="cs-step-tag">Status System</span>
+              <span class="cs-step-tag">Alert Hierarchy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">04</div>
+          <div>
+            <div class="cs-step-title">Unify the search experience across all modules</div>
+            <div class="cs-step-body">Search was the number one pain point in the survey. The redesigned global search worked across all eight modules simultaneously — criminal records, cases, suspects, vehicles, and prison data — with results grouped by type and ranked by relevance. Partial name matching was added for Arabic names which have multiple common spellings. Filters were redesigned as persistent sidebar options rather than modal overlays, so officers could refine results without losing their place in the search.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Global Search</span>
+              <span class="cs-step-tag">Cross-module Filtering</span>
+              <span class="cs-step-tag">Arabic Name Matching</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">05</div>
+          <div>
+            <div class="cs-step-title">Connect related records into a unified case view</div>
+            <div class="cs-step-body">The problem of officers opening multiple tabs to view related data was solved by designing a unified case detail view. From a single screen, an officer could now see the case file, the suspect's full criminal history, any impounded vehicles connected to the case, the current prison status of involved parties, and the case update timeline — all without navigating away. Related records were linked with a clear relationship visualization rather than buried in separate modules.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Case Detail View</span>
+              <span class="cs-step-tag">Record Linking</span>
+              <span class="cs-step-tag">Relationship Visualization</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">06</div>
+          <div>
+            <div class="cs-step-title">Prototype, test, and refine with real users</div>
+            <div class="cs-step-body">High-fidelity prototypes of the dashboard, case view, and search were tested with the same group of officers from the research phase. Two rounds of testing with six users each. First round identified three critical workflow mismatches — areas where my assumptions about how officers move through a task were wrong. Second round validated the corrections and surfaced only minor labeling issues. Both rounds were conducted in Arabic, facilitated in Arabic, and analyzed with Arabic-speaking stakeholders.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Prototype Testing</span>
+              <span class="cs-step-tag">Arabic Facilitation</span>
+              <span class="cs-step-tag">Iterative Refinement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 KEY DECISIONS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">05</div>
+        <h2 class="cs-section-title">Key Design<br><em>Decisions</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Enterprise law enforcement tools have very specific tradeoffs that do not exist in consumer products. These were the decisions where getting it wrong would have had real consequences.</p>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 01 — Visual Density</div>
+          <div class="cs-decision-title">Dense information over generous whitespace</div>
+          <div class="cs-decision-body">Most modern UX practice pushes toward spacious, minimal interfaces. For this system, the opposite was correct. Officers need to see a lot of data at once — reducing density would mean more scrolling, more navigation, more time to reach a piece of information that might be urgent. The design uses consistent, tight spacing with strong typographic hierarchy to keep density readable, rather than reducing density to increase readability. These are not the same solution.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 02 — Status Colour System</div>
+          <div class="cs-decision-title">A unified colour-coded status system across all modules</div>
+          <div class="cs-decision-body">Case statuses, record types, alert levels, and action states each needed a distinct visual identity that worked consistently across all eight modules. I defined six status colors — each tested for color-blind accessibility and each carrying the same meaning in every context it appeared. Red for urgent or flagged. Amber for pending action. Blue for informational. Green for resolved. Grey for archived. White for new. This replaced a system where each module had invented its own color logic independently.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 03 — Change Management in the UI</div>
+          <div class="cs-decision-title">Keeping familiar elements even when better alternatives existed</div>
+          <div class="cs-decision-body">There were several places where I could see a significantly better UX pattern than what existed — but changing it would have broken muscle memory for officers who used the system every day under stress. The case ID field format, the navigation sidebar structure, and the record numbering convention were all kept deliberately similar to the old system, even though I disagreed with some of those choices. Trust matters more than elegance when the users are professionals who depend on the tool.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 04 — Role-Based Interface Differentiation</div>
+          <div class="cs-decision-title">Same system, different views based on what each role needs</div>
+          <div class="cs-decision-body">Rather than building separate systems for different roles, I designed a single interface with role-based module visibility and action permissions. An investigator sees case editing and suspect linking tools. A department head sees approval queues and cross-department case summaries. An administrator sees user management and audit logs. The underlying system is the same. What is shown to each role is curated. This simplified development significantly while making each user's experience feel purpose-built for their job.</div>
+        </div>
+
+        <div class="cs-comparison reveal">
+          <div class="cs-comparison-header">
+            <div class="cs-comparison-col-label before">Before the redesign</div>
+            <div class="cs-comparison-col-label after">After the redesign</div>
+          </div>
+          <div class="cs-comparison-row">
+            <div class="cs-comparison-cell">Finding a criminal record required knowing the exact Emirates ID. No partial search.</div>
+            <div class="cs-comparison-cell after">Global search across all modules. Arabic name partial matching. Results grouped by type.</div>
+          </div>
+          <div class="cs-comparison-row">
+            <div class="cs-comparison-cell">Case details, suspect history, and vehicle data lived in three separate modules with no links between them.</div>
+            <div class="cs-comparison-cell after">Unified case view with all related records connected and visible on a single screen.</div>
+          </div>
+          <div class="cs-comparison-row">
+            <div class="cs-comparison-cell">Status indicators used different colors in different modules — the same color meant different things depending on where you were.</div>
+            <div class="cs-comparison-cell after">Six consistent status colors defined system-wide. Same color always means the same thing.</div>
+          </div>
+          <div class="cs-comparison-row">
+            <div class="cs-comparison-cell">Dashboard was a list of links. No summary of active work, no alerts, no priorities visible on arrival.</div>
+            <div class="cs-comparison-cell after">Command center dashboard with active case summary, priority alerts, assigned tasks, and wanted persons sidebar.</div>
+          </div>
+          <div class="cs-comparison-row">
+            <div class="cs-comparison-cell">All roles saw the same interface with the same options. No differentiation based on what each role actually does.</div>
+            <div class="cs-comparison-cell after">Role-based interface showing only what each user level needs. Cleaner for everyone, more secure for the organization.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 OUTCOMES -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">06</div>
+        <h2 class="cs-section-title">Out<em>comes</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Outcome measurement for an internal law enforcement tool is different from a consumer product. There are no conversion rates or engagement metrics. The measures that matter are task completion speed, error rates, and officer confidence — all of which were tracked in prototype testing and post-launch observation.</p>
+
+        <div class="cs-outcome-grid reveal">
+          <div class="cs-outcome-card dark">
+            <div class="cs-outcome-num">1,400+</div>
+            <div class="cs-outcome-label">Daily active users</div>
+            <div class="cs-outcome-desc">Officers across Dubai Police CID departments using the redesigned portal for active case work</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">4.2x</div>
+            <div class="cs-outcome-label">Fewer clicks per lookup</div>
+            <div class="cs-outcome-desc">Average lookup task reduced from 4.2 unnecessary clicks to under 1, measured in prototype testing with the same officer group</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">8</div>
+            <div class="cs-outcome-label">Modules unified</div>
+            <div class="cs-outcome-desc">Criminal records, wanted persons, case management, prison status, vehicle impound, case updates, user management, and audit log — all under one coherent design system</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">100%</div>
+            <div class="cs-outcome-label">Arabic-native</div>
+            <div class="cs-outcome-desc">Every component built RTL-first. No CSS mirroring of LTR layouts. Typography, icons, and reading flow all designed for Arabic as the primary language</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">0</div>
+            <div class="cs-outcome-label">Critical errors in testing</div>
+            <div class="cs-outcome-desc">Second-round prototype testing with six officers produced zero critical workflow failures, compared to eleven in the pre-design baseline observation</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">3</div>
+            <div class="cs-outcome-label">Role levels designed</div>
+            <div class="cs-outcome-desc">Investigator, department head, and administrator roles each have a purposefully differentiated interface built from the same underlying system</div>
+          </div>
+        </div>
+
+        <p class="cs-text">The less quantifiable outcome was more significant: officers stopped calling the system "the old thing" and started describing it as a tool they trusted. For a professional group that is deeply skeptical of change, that shift in language was the clearest signal the redesign had worked.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 WHAT I LEARNED -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">07</div>
+        <h2 class="cs-section-title">What I<br><em>Learned</em></h2>
+      </div>
+      <div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Designing for experts is harder than designing for beginners.</strong> Experts have deep muscle memory. They will resist any change to interaction patterns they have internalized, even if those patterns are objectively worse. You have to earn the right to change things by first proving you understand how they work.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Surveys are only useful if the questions are designed correctly.</strong> The first survey draft asked officers how satisfied they were with different features. Satisfaction is a bad measure because people normalize to what they have. Reframing to "what do you do instead of using this feature" revealed the real picture. Workarounds are where the real problems hide.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Arabic RTL is not a translation layer. It is a completely different design problem.</strong> Any team that designs in English first and then "converts" to Arabic will produce an Arabic interface that feels foreign to Arabic speakers, because the spatial logic, reading rhythm, and typographic conventions of Arabic are fundamentally different from English. This needs to be built from the ground up in the target language.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Context determines what good design looks like.</strong> Dense, data-heavy interfaces are the right answer here. Minimal, whitespace-led design would be wrong for this context. There is no universal visual language for good UX — there is only the right language for the specific user doing a specific job in a specific environment.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Internal tools are underinvested in and that is a real cost.</strong> The hours officers spent navigating a broken system, the errors made from unclear data presentation, the tasks abandoned because the tool made them too hard — all of that has a cost that simply does not get measured because it is invisible. Good design on internal tools is not a nice-to-have. It is an operational decision.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="cs-next">
+  <div class="cs-next-label">Next Case Study</div>
+  <div class="cs-next-title"><em>Mawqef</em><br>Parking App</div>
+  <a href="index.html#work" class="cs-next-link">
+    Back to all projects
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-left">Raheel Sheikh © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/raheelsheikh/">LinkedIn</a></li>
+    <li><a href="https://www.behance.net/s4raheel">Behance</a></li>
+    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Resume</a></li>
+  </ul>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function () {
+gsap.registerPlugin(ScrollTrigger);
+
+const cursor   = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mx = -200, my = -200, fx = -200, fy = -200;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.set(cursor, { x: mx, y: my });
+});
+(function tick() {
+  fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+  gsap.set(follower, { x: fx, y: fy });
+  requestAnimationFrame(tick);
+})();
+
+gsap.from('.cs-hero-eyebrow', { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.3 });
+gsap.from('.cs-hero-title',   { opacity: 0, y: 44, duration: 1.1, ease: 'power3.out', delay: 0.5 });
+gsap.from('.cs-hero-meta',    { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.8 });
+gsap.from('.cs-stat',         { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out', stagger: 0.1, delay: 1.0 });
+
+gsap.to('.cs-hero-img', {
+  yPercent: 22, ease: 'none',
+  scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-section-label').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, x: -20, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-process-step').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', delay: i * 0.05,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-comparison-row').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 16, duration: 0.6, ease: 'power2.out', delay: i * 0.07,
+    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-outcome-card').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 20, duration: 0.6, ease: 'power2.out', delay: i * 0.08,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+})();
+</script>
+</body>
+</html>

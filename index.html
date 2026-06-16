@@ -363,18 +363,26 @@ nav.scrolled {
 }
 
 h4 {
-  position: absolute;
-  letter-spacing: 0px;
-  font-size: 90px;
-  line-height: 72px;
-  font-weight: 900;
-  right: -39px;
-  top: 220px;
-  color: #00000024;
-  font-family: revert;
-  pointer-events: none;
+      position: absolute;
+    letter-spacing: 0px;
+    font-size: 140px;
+    line-height: 106px;
+    font-weight: 900;
+    right: -64px;
+    top: 220px;
+    color: #9a9a9a;
+    font-family: system-ui;
+    pointer-events: none;
 }
 
+.parallax-title span{
+
+    font-size: 60px;
+    font-style: italic;
+    color: #ccc;
+    font-family: inherit;
+
+    }
 /* =============================================
    MARQUEE
    ============================================= */
@@ -423,10 +431,10 @@ h4 {
   gap: 14px;
   font-size: 52px;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
+  text-transform: none;
   color: #434342;
   margin-bottom: 64px;
-  font-family: var(--serif);
+  font-family: math;
 }
 
 .section-label::after {
@@ -748,11 +756,28 @@ footer {
   opacity: 0;
   transform: translateY(48px);
 }
+.me{
+  position: absolute;
+  right: 210px;
+  top: 100px;
+  z-index: 99;
+}
+.me img{
+  width: 600px;
+  opacity: 0.2;
+}
 
 /* =============================================
    MOBILE
    ============================================= */
 @media (max-width: 768px) {
+  h4{
+    display: none;
+  }
+  .section-label{
+    font-size: 38px;
+    line-height: 38px;
+  }
   nav { padding: 20px 24px; }
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
@@ -847,6 +872,7 @@ footer {
     I design digital products that simplify complexity.
 
   </p>
+  <div class="me"><img src="assets/Raheel-Sheikh.png"></div>
   <h4>PORT<br>FOLIO</h4>
   <h1 class="hero-title">
     <span class="word-line"><span class="reveal-word">Product design</span></span>
@@ -894,14 +920,14 @@ footer {
       <div class="parallax-overlay"></div>
       <div class="parallax-content">
         <p class="parallax-tag">Public Services · 2025</p>
-        <h3 class="parallax-title">Sharjah Municipality<br>Service Portal</h3>
+        <h3 class="parallax-title">Sharjah City Municipality<br><span>Service Portal</span></h3>
         <ul class="parallax-details">
           <li>Redesigned <span>120+</span> government services across 6 sectors</li>
           <li>Used by <span>1M+</span> residents annually</li>
           <li>Reduced service completion time by <span>35%</span></li>
           <li>Bilingual Arabic and English design system</li>
         </ul>
-        <a href="shjmun-case-study.html" class="parallax-link" target="_blank">Case study ↗</a>
+        <a href="shjmun-case-study.html" class="parallax-link" >Case study ↗</a>
         <a href="https://shjmun.gov.ae" class="parallax-link" target="_blank">Visit site ↗</a>
       </div>
       <div class="parallax-num">01</div>
@@ -920,6 +946,7 @@ footer {
           <li>Delivered a modern design system aligned with Dubai Police digital standards</li>
           <li>Prototype tested with <span>1,400+</span> active users — simplified case reporting</li>
         </ul>
+        <a href="dubai-police-case-study.html"  class="parallax-link">Case study ↗</a>
       </div>
       <div class="parallax-num">02</div>
     </div>
@@ -964,7 +991,7 @@ footer {
       </div>
       <div class="parallax-overlay"></div>
       <div class="parallax-content">
-        <p class="parallax-tag">Sustainable Environment · 2023</p>
+        <p class="parallax-tag">Sustainable Environment · 2022</p>
         <h3 class="parallax-title">VCM — Saudi Arabia</h3>
         <ul class="parallax-details">
           <li>Auctioned over <span>2.2M</span> tonnes of carbon credits in June 2023</li>
@@ -994,7 +1021,7 @@ footer {
     <p class="about-body reveal-up">Over the past 12+ years I've helped shape products used by millions across finance, government, healthcare, and retail. Every project begins with research, because the strongest ideas aren't protected from criticism — they're improved by it.</p>
     <div class="stats-row">
       <div class="reveal-up"><div class="stat-num">48+</div><div class="stat-label">Projects shipped</div></div>
-      <div class="reveal-up"><div class="stat-num">12yr</div><div class="stat-label">In the field</div></div>
+      <div class="reveal-up"><div class="stat-num">12yr+</div><div class="stat-label">In the field</div></div>
       <div class="reveal-up"><div class="stat-num">12</div><div class="stat-label">Industries</div></div>
     </div>
     <div class="skills-list">
