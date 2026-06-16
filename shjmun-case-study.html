@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharjah Municipality — Case Study · Raheel Sheikh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/raheel.png">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --ink: #0e0d0c;
+  --ink2: #2a2826;
+  --muted: #8a8680;
+  --accent: #c8b89a;
+  --accent2: #e2d4c0;
+  --line: rgba(14,13,12,0.10);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --green: #2d5a27;
+  --green-light: #eaf3e8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background: rgba(250,250,248,0.90);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: math;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* HERO */
+.cs-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 48px;
+  background: #0e0d0c;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1714 0%, #0e0d0c 60%, #1c1a16 100%);
+}
+
+.cs-hero-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.18;
+  filter: grayscale(30%);
+}
+
+.cs-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+  padding-top: 140px;
+}
+
+.cs-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 32px;
+  font-family: var(--sans);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: #ccc;
+}
+
+.cs-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 110px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  max-width: 900px;
+}
+
+.cs-hero-title em {
+  font-style: italic;
+  color: #ccc;
+}
+
+.cs-hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 32px;
+}
+
+.cs-hero-meta-item {}
+
+.cs-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  font-family: var(--sans);
+  margin-bottom: 6px;
+}
+
+.cs-meta-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.80);
+  font-family: var(--sans);
+  font-weight: 300;
+}
+
+/* STAT BAR */
+.cs-stats-bar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cs-stat {
+  padding: 36px 48px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.cs-stat:last-child { border-right: none; }
+
+.cs-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+}
+
+/* MAIN BODY */
+.cs-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* SECTION */
+.cs-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-section:last-child { border-bottom: none; }
+
+.cs-section-inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-section-label {
+  position: sticky;
+  top: 90px;
+}
+
+.cs-section-num {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ccc;
+  font-family: var(--sans);
+  margin-bottom: 10px;
+}
+
+.cs-section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.cs-section-title em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* BODY TEXT */
+.cs-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.cs-text:last-child { margin-bottom: 0; }
+
+.cs-text strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.cs-lead {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+/* CALLOUT / PULL QUOTE */
+.cs-pullquote {
+  border-left: 2px solid #ccc;
+  padding: 24px 32px;
+  margin: 40px 0;
+  background: rgba(200,184,154,0.06);
+  border-radius: 0 8px 8px 0;
+}
+
+.cs-pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* CHALLENGE CARDS */
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-challenge-card {
+  background: #f4f2ee;
+  padding: 32px;
+}
+
+.cs-challenge-card:nth-child(1) { background: #0e0d0c; }
+.cs-challenge-card:nth-child(1) .cs-challenge-title { color: var(--white); }
+.cs-challenge-card:nth-child(1) .cs-challenge-body { color: rgba(255,255,255,0.52); }
+.cs-challenge-card:nth-child(1) .cs-challenge-icon { color: #ccc; }
+
+.cs-challenge-icon {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+
+.cs-challenge-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-challenge-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* PROCESS STEPS */
+.cs-process {
+  margin: 40px 0;
+}
+
+.cs-process-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-step-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: #ccc;
+  padding-top: 3px;
+}
+
+.cs-step-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-step-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cs-step-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* DESIGN DECISIONS */
+.cs-decision {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-decision::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: #ccc;
+}
+
+.cs-decision-problem {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.cs-decision-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.cs-decision-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.cs-decision-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cs-decision-side {
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cs-decision-side.before {
+  background: rgba(14,13,12,0.04);
+  color: var(--muted);
+}
+
+.cs-decision-side.after {
+  background: rgba(200,184,154,0.12);
+  color: var(--ink2);
+}
+
+.cs-decision-side-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.cs-decision-side.before .cs-decision-side-label { color: var(--muted); }
+.cs-decision-side.after  .cs-decision-side-label { color: #ccc; }
+
+/* OUTCOME GRID */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-outcome-card {
+  background: #f4f2ee;
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.cs-outcome-card:first-child {
+  background: #0e0d0c;
+}
+.cs-outcome-card:first-child .cs-outcome-num { color: #ccc; }
+.cs-outcome-card:first-child .cs-outcome-label { color: rgba(255,255,255,0.40); }
+.cs-outcome-card:first-child .cs-outcome-desc { color: rgba(255,255,255,0.60); }
+
+.cs-outcome-num {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-outcome-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.cs-outcome-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* LESSONS */
+.cs-lessons {
+  margin: 40px 0;
+}
+
+.cs-lesson {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-lesson-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: 8px;
+}
+
+.cs-lesson-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.cs-lesson-body strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* IMAGE BLOCK */
+.cs-image-block {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.cs-image-block img {
+  width: 100%;
+  display: block;
+}
+
+.cs-image-caption {
+  padding: 16px 24px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* IMAGE PAIR */
+.cs-image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.cs-image-pair img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* NEXT CASE STUDY */
+.cs-next {
+  background: #0e0d0c;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.cs-next-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 24px;
+}
+
+.cs-next-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.cs-next-title em { font-style: italic; color: #ccc; }
+
+.cs-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.20);
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.cs-next-link:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.40);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left { font-family: var(--serif); font-size: 15px; font-weight: 300; color: var(--ink); }
+
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ink); }
+
+/* CURSOR */
+#cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+#cursor-follower {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid rgba(14,13,12,0.20); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .cs-hero { padding: 0 24px; }
+  .cs-hero-title { font-size: clamp(40px, 12vw, 72px); }
+  .cs-stats-bar { grid-template-columns: 1fr 1fr; }
+  .cs-stat { padding: 24px; }
+  .cs-body { padding: 0 24px; }
+  .cs-section { padding: 64px 0; }
+  .cs-section-inner { grid-template-columns: 1fr; gap: 32px; }
+  .cs-section-label { position: static; }
+  .cs-challenge-grid { grid-template-columns: 1fr; }
+  .cs-outcome-grid { grid-template-columns: 1fr 1fr; }
+  .cs-decision-split { grid-template-columns: 1fr; }
+  .cs-image-pair { grid-template-columns: 1fr; }
+  .cs-image-pair img { height: 220px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  #cursor, #cursor-follower { display: none; }
+  .cs-next { padding: 60px 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Raheel Sheikh</a>
+  <a href="index.html#work" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All projects
+  </a>
+</nav>
+
+<!-- HERO -->
+<header class="cs-hero">
+  <img class="cs-hero-img" src="assets/homescreen.png" alt="">
+
+  <div class="cs-hero-content">
+    <div class="cs-hero-eyebrow">Public Services · Government Digital Transformation</div>
+
+    <h1 class="cs-hero-title">
+      Redesigning how<br>
+      a city of <em>1 million</em><br>
+      accesses its services.
+    </h1>
+    <div style="float: right;"><img src="assets/shjmun.png" width="90" ></div>
+
+    <div class="cs-hero-meta">
+      <div class="cs-hero-meta-item">
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">Sharjah Municipality, UAE</div>
+      </div>
+      <div class="cs-hero-meta-item">
+        <div class="cs-meta-label">My Role</div>
+        <div class="cs-meta-value">Lead UX/UI Designer</div>
+      </div>
+      <div class="cs-hero-meta-item">
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">2017 — Present</div>
+      </div>
+      <div class="cs-hero-meta-item">
+        <div class="cs-meta-label">Scope</div>
+        <div class="cs-meta-value">Strategy, Research, Design System, Delivery</div>
+      </div>
+      <div class="cs-hero-meta-item">
+        <div class="cs-meta-label">Platforms</div>
+        <div class="cs-meta-value">Web · Mobile · Kiosk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="cs-stats-bar">
+    <div class="cs-stat">
+      <div class="cs-stat-num">1M+</div>
+      <div class="cs-stat-label">Residents served annually</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">120+</div>
+      <div class="cs-stat-label">Services redesigned</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">35%</div>
+      <div class="cs-stat-label">Faster service completion</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">6</div>
+      <div class="cs-stat-label">Sectors unified under one system</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="cs-body">
+
+  <!-- 01 OVERVIEW -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">01</div>
+        <h2 class="cs-section-title">Over<em>view</em></h2>
+      </div>
+      <div>
+        <p class="cs-lead">Sharjah Municipality manages everything from building permits and public health to parks, agriculture, and city infrastructure. Before 2017, residents had to physically visit offices or navigate a fragmented, outdated website that barely worked on mobile.</p>
+        <p class="cs-text">The organization needed more than a visual refresh. The real problem was structural: dozens of disconnected digital touchpoints, no consistent language, no unified design logic, and services built around internal processes rather than resident needs.</p>
+        <p class="cs-text">My work was to change that. From scratch. Across six service sectors, two languages, and three platforms — while maintaining continuity with an active system that real people depended on every day.</p>
+        <div class="cs-pullquote">
+          <p>"A government service isn't successful when it's launched. It's successful when a resident gets what they need without needing to call anyone."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 CHALLENGE -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">02</div>
+        <h2 class="cs-section-title">The<br><em>Challenge</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">This wasn't a single app with a clear scope. It was a living platform touching every part of a city government — each department with its own priorities, data models, and legacy systems. The design challenges were layered on top of political, technical, and cultural constraints.</p>
+
+        <div class="cs-challenge-grid reveal">
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="cs-challenge-title">120+ services, zero consistency</div>
+            <div class="cs-challenge-body">Every service had been built independently over many years. Different layouts, different terminology, different interaction patterns. A resident who used the building permits service had to relearn everything when they switched to health services.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            </div>
+            <div class="cs-challenge-title">Bilingual from the ground up</div>
+            <div class="cs-challenge-body">Arabic and English are not just translation problems — they are structurally opposite. Arabic reads right-to-left, has different typographic rules, and carries a different visual weight. Both languages had to feel native, not like one was an afterthought of the other.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="cs-challenge-title">A wide and unpredictable user base</div>
+            <div class="cs-challenge-body">Users ranged from tech-savvy young residents to elderly Arabic-speaking citizens with limited digital literacy, business owners, construction contractors, healthcare workers, and tourists. One interface had to serve all of them.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="cs-challenge-title">No existing design system</div>
+            <div class="cs-challenge-body">There was no component library, no shared token set, no documented patterns. Every new feature or service was designed from scratch by whoever was assigned to it. Scale was impossible without first building the foundation that scale runs on.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 APPROACH -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">03</div>
+        <h2 class="cs-section-title">The<br><em>Approach</em></h2><br><br>
+         <div>
+          <img src="approach.png" width="80%">
+        </div>
+      </div>
+      <div>
+       
+        <p class="cs-text">The instinct with large-scale projects is to immediately start designing. I pushed back on that. We needed to understand what we were actually dealing with before a single screen was opened in Figma.</p>
+
+        <p class="cs-text">The first three months were entirely research, audit, and strategy. Only after that did we start designing — and even then, we built the system before we built the product.</p>
+
+        <div class="cs-process reveal">
+          <div class="cs-process-step">
+            <div class="cs-step-num">01</div>
+            <div>
+              <div class="cs-step-title">Audit and discovery</div>
+              <div class="cs-step-body">Mapped every existing service, touchpoint, and user flow across all six sectors. Identified 47 distinct UI patterns being used inconsistently across the platform. Ran structured interviews with 60+ residents across different demographics and Arabic-language comfort levels. Shadowed municipality staff who dealt with daily resident queries to understand where digital services were failing.</div>
+              <div class="cs-step-tags">
+                <span class="cs-step-tag">User Interviews</span>
+                <span class="cs-step-tag">Service Mapping</span>
+                <span class="cs-step-tag">Heuristic Audit</span>
+                <span class="cs-step-tag">Stakeholder Sessions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-process-step">
+            <div class="cs-step-num">02</div>
+            <div>
+              <div class="cs-step-title">Define the information architecture</div>
+              <div class="cs-step-body">The old site organized services the way the municipality was organized internally — by department. Residents don't think in departments. They think in tasks: "I need a building permit," not "I need to visit the Urban Planning department." We restructured the entire IA around resident intent, not organizational hierarchy. This alone reduced navigation depth by an average of 2.3 levels across services.</div>
+              <div class="cs-step-tags">
+                <span class="cs-step-tag">Card Sorting</span>
+                <span class="cs-step-tag">Tree Testing</span>
+                <span class="cs-step-tag">IA Mapping</span>
+                <span class="cs-step-tag">Journey Mapping</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-process-step">
+            <div class="cs-step-num">03</div>
+            <div>
+              <div class="cs-step-title">Build the bilingual design system first</div>
+              <div class="cs-step-body">Before designing a single service flow, we built the system that all services would run on. A bilingual component library with 180+ components, each tested in both Arabic RTL and English LTR. Type scales, color tokens, spacing rules, form patterns, feedback states — documented so clearly that a junior developer or a new designer could build a new service without needing to invent anything. This was the highest-leverage work of the entire project.</div>
+              <div class="cs-step-tags">
+                <span class="cs-step-tag">Figma Design System</span>
+                <span class="cs-step-tag">Token Architecture</span>
+                <span class="cs-step-tag">RTL / LTR Components</span>
+                <span class="cs-step-tag">Documentation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-process-step">
+            <div class="cs-step-num">04</div>
+            <div>
+              <div class="cs-step-title">Design iteratively, test continuously</div>
+              <div class="cs-step-body">Services were redesigned sector by sector, starting with the highest-volume ones: building permits, health certifications, and environment licenses. Each went through three rounds of usability testing with real residents before going to development. We specifically recruited low-digital-literacy users for testing — if they could complete the task, anyone could.</div>
+              <div class="cs-step-tags">
+                <span class="cs-step-tag">Usability Testing</span>
+                <span class="cs-step-tag">Prototype Testing</span>
+                <span class="cs-step-tag">A/B Testing</span>
+                <span class="cs-step-tag">Accessibility Review</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-process-step">
+            <div class="cs-step-num">05</div>
+            <div>
+              <div class="cs-step-title">Rollout and live iteration</div>
+              <div class="cs-step-body">We launched sectors in phases rather than all at once. This let us absorb real-world feedback early and apply it to later phases. Post-launch analytics and call center data were our ongoing feedback loop — every spike in support calls pointed to something we needed to fix in the UI.</div>
+              <div class="cs-step-tags">
+                <span class="cs-step-tag">Phased Launch</span>
+                <span class="cs-step-tag">Analytics Review</span>
+                <span class="cs-step-tag">Feedback Loops</span>
+                <span class="cs-step-tag">Continuous Improvement</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 KEY DESIGN DECISIONS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">04</div>
+        <h2 class="cs-section-title">Key Design<br><em>Decisions</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">These were the decisions where we had real choices and real tradeoffs — not just styling, but structural calls that shaped how the whole platform behaves.</p>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 01 — Navigation Structure</div>
+          <div class="cs-decision-title">Organizing by resident intent, not by internal department</div>
+          <div class="cs-decision-body">The old structure mirrored the municipality org chart. We rebuilt it entirely around what residents are trying to accomplish.</div>
+          <div class="cs-decision-split">
+            <div class="cs-decision-side before">
+              <div class="cs-decision-side-label">Before</div>
+              "Urban Planning Department → Permits Section → Building Permits → New Application" — four levels deep, department-first language
+            </div>
+            <div class="cs-decision-side after">
+              <div class="cs-decision-side-label">After</div>
+              "Building Services → Apply for a Building Permit" — two levels, task-first language, same result reached faster
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 02 — Bilingual Architecture</div>
+          <div class="cs-decision-title">Treating Arabic as a first-class language, not a translation</div>
+          <div class="cs-decision-body">Most bilingual government sites in the region treat one language as primary and the other as a port. We designed every component simultaneously in both directions from day one — different type scales, different line heights, different icon placement rules, different form input behaviors. This added significant time to the design system build but meant both experiences genuinely worked rather than one of them merely existing.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 03 — Progressive Disclosure in Forms</div>
+          <div class="cs-decision-title">Showing only what the resident needs at each step</div>
+          <div class="cs-decision-body">Government forms are notoriously long. The temptation is to put everything on one page to "show transparency." Testing showed this caused abandonment within the first 30 seconds. We moved to a step-by-step model where each screen has one clear question or task, with context shown only when relevant.</div>
+          <div class="cs-decision-split">
+            <div class="cs-decision-side before">
+              <div class="cs-decision-side-label">Before</div>
+              Single-page forms with 20+ fields visible at once. Average abandonment at field 4. Users called the call center to complete applications.
+            </div>
+            <div class="cs-decision-side after">
+              <div class="cs-decision-side-label">After</div>
+              Multi-step flows, never more than 5 fields per screen. Clear progress indication. Completion rate improved significantly across tested services.
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 04 — Accessibility as a constraint, not a feature</div>
+          <div class="cs-decision-title">Building for the full range of residents, not the average one</div>
+          <div class="cs-decision-body">Accessibility was treated as a design constraint from the beginning, not a checklist at the end. Every component was built to WCAG 2.1 AA as a baseline. Color contrast ratios, touch target sizes, keyboard navigation, and screen reader compatibility were tested in every sprint — not saved for a final accessibility pass that often gets cut when timelines slip.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 DESIGN SYSTEM -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">05</div>
+        <h2 class="cs-section-title">Design<br><em>System</em></h2>
+      </div>
+      <div>
+        <p class="cs-lead">The design system was the most consequential deliverable of this project. Not the website. The system.</p>
+        <p class="cs-text">A well-designed page can still create chaos if the next designer builds the next page differently. The system was what allowed consistency to scale across 120+ services without requiring my involvement in every decision.</p>
+
+        <div class="cs-image-block reveal">
+          <img src="assets/homescreen.png" alt="Sharjah Municipality Design System">
+          <div class="cs-image-caption">Bilingual component library — Arabic RTL and English LTR running from the same token set</div>
+        </div>
+
+        <p class="cs-text"><strong>What the system included:</strong> a full token architecture (color, typography, spacing, elevation), 180+ components each documented with usage rules and bilingual variants, interaction patterns for forms, modals, navigation, tables, and data display, error and empty state patterns, and a governance model for how new components get proposed and added.</p>
+
+        <p class="cs-text"><strong>What it enabled:</strong> a team of four designers and eight developers could build new services in days rather than weeks, with near-zero QA time spent on visual inconsistencies. When a department needed a new form type or a new service category, they could assemble it from existing patterns rather than designing from scratch.</p>
+
+        <div class="cs-pullquote">
+          <p>A design system isn't valuable when you build it. It's valuable six months later when someone else uses it to build something you weren't involved in — and it's still right.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 OUTCOMES -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">06</div>
+        <h2 class="cs-section-title">Out<em>comes</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Outcomes were measured across three dimensions: resident experience, operational efficiency, and digital adoption. All three moved in the right direction.</p>
+
+        <div class="cs-outcome-grid reveal">
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">35%</div>
+            <div class="cs-outcome-label">Faster completion</div>
+            <div class="cs-outcome-desc">Average time to complete a service request dropped by 35% post-redesign, measured across the five highest-volume services</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">1M+</div>
+            <div class="cs-outcome-label">Annual users</div>
+            <div class="cs-outcome-desc">The portal now serves over one million residents per year across web and mobile platforms</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">120+</div>
+            <div class="cs-outcome-label">Services redesigned</div>
+            <div class="cs-outcome-desc">All six service sectors redesigned under a unified system — building, environment, health, agriculture, planning, and public services</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">180+</div>
+            <div class="cs-outcome-label">System components</div>
+            <div class="cs-outcome-desc">Reusable bilingual components maintained by a team of four, now the standard for all new Sharjah Municipality digital products</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">3</div>
+            <div class="cs-outcome-label">Platforms unified</div>
+            <div class="cs-outcome-desc">Web, mobile, and kiosk experiences now share the same design language and service logic for the first time</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">2</div>
+            <div class="cs-outcome-label">Languages, one system</div>
+            <div class="cs-outcome-desc">Arabic RTL and English LTR both run natively from the same component library — neither is a translation of the other</div>
+          </div>
+        </div>
+
+        <p class="cs-text">Beyond the numbers: the call center reported a measurable reduction in calls from residents who were confused by the process. That metric — the number of people who did not need help — is the most honest measure of whether a service experience actually works.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 WHAT I LEARNED -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">07</div>
+        <h2 class="cs-section-title">What I<br><em>Learned</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Eight years of continuous work on a single platform at this scale teaches you things you cannot learn from shorter projects.</p>
+
+        <div class="cs-lessons">
+          <div class="cs-lesson">
+            <div class="cs-lesson-dot"></div>
+            <div class="cs-lesson-body"><strong>Systems thinking is the most underrated design skill.</strong> The ability to design a component that works today and also works correctly in six unforeseen contexts — that is more valuable than the ability to produce a beautiful single screen.</div>
+          </div>
+          <div class="cs-lesson">
+            <div class="cs-lesson-dot"></div>
+            <div class="cs-lesson-body"><strong>Stakeholder alignment is part of the design work.</strong> A technically perfect design that nobody internally believes in will not survive. I learned to spend real time helping department heads understand what we were doing and why — not just presenting designs, but building conviction.</div>
+          </div>
+          <div class="cs-lesson">
+            <div class="cs-lesson-dot"></div>
+            <div class="cs-lesson-body"><strong>Complexity does not require complexity.</strong> The hardest design challenge on this project was making 120 different government services feel simple and similar. The temptation is to over-customize each one. The discipline is to find the pattern underneath them all and design that.</div>
+          </div>
+          <div class="cs-lesson">
+            <div class="cs-lesson-dot"></div>
+            <div class="cs-lesson-body"><strong>Bilingual design needs to start on day one.</strong> Any team that designs in one language and "adds" the other later will ship a product where one language is clearly an afterthought. Typography, layout, iconography, form behavior — all of it changes depending on reading direction, and those changes need to be designed, not retrofitted.</div>
+          </div>
+          <div class="cs-lesson">
+            <div class="cs-lesson-dot"></div>
+            <div class="cs-lesson-body"><strong>The real user test is call center volume.</strong> Resident satisfaction surveys can be gamed. Support call volume cannot. Every spike in calls after a release told us something specific had failed — and that feedback loop, over years, made the design measurably better.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- NEXT -->
+<div class="cs-next">
+  <div class="cs-next-label">Next Case Study</div>
+  <div class="cs-next-title">Dubai<br><em>Police</em></div>
+  <a href="index.html#work" class="cs-next-link">
+    Back to all projects
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">Raheel Sheikh © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/raheelsheikh/">LinkedIn</a></li>
+    <li><a href="https://www.behance.net/s4raheel">Behance</a></li>
+    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Resume</a></li>
+  </ul>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function () {
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Cursor
+const cursor   = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mx = -200, my = -200, fx = -200, fy = -200;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.set(cursor, { x: mx, y: my });
+});
+(function tick() {
+  fx += (mx - fx) * 0.12;
+  fy += (my - fy) * 0.12;
+  gsap.set(follower, { x: fx, y: fy });
+  requestAnimationFrame(tick);
+})();
+
+// Hero entrance
+gsap.from('.cs-hero-eyebrow', { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.3 });
+gsap.from('.cs-hero-title',   { opacity: 0, y: 40, duration: 1.1, ease: 'power3.out', delay: 0.5 });
+gsap.from('.cs-hero-meta',    { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.8 });
+gsap.from('.cs-stat',         { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', stagger: 0.1, delay: 1.0 });
+
+// Scroll reveals
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity: 1,
+    y: 0,
+    duration: 0.85,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+  });
+});
+
+// Section labels parallax
+document.querySelectorAll('.cs-section-label').forEach(label => {
+  gsap.from(label, {
+    opacity: 0,
+    x: -20,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: label, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Process steps stagger
+const steps = document.querySelectorAll('.cs-process-step');
+steps.forEach((step, i) => {
+  gsap.from(step, {
+    opacity: 0,
+    y: 28,
+    duration: 0.75,
+    ease: 'power3.out',
+    delay: i * 0.06,
+    scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Decision cards stagger
+const decisions = document.querySelectorAll('.cs-decision');
+decisions.forEach((d, i) => {
+  gsap.from(d, {
+    opacity: 0,
+    y: 24,
+    duration: 0.75,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: d, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Lesson items stagger
+const lessons = document.querySelectorAll('.cs-lesson');
+lessons.forEach((l, i) => {
+  gsap.from(l, {
+    opacity: 0,
+    x: -16,
+    duration: 0.65,
+    ease: 'power2.out',
+    delay: i * 0.07,
+    scrollTrigger: { trigger: l, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+// Outcome cards stagger
+const outcomeCards = document.querySelectorAll('.cs-outcome-card');
+outcomeCards.forEach((c, i) => {
+  gsap.from(c, {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: 'power2.out',
+    delay: i * 0.08,
+    scrollTrigger: { trigger: c, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+// Hero image parallax on scroll
+gsap.to('.cs-hero-img', {
+  yPercent: 20,
+  ease: 'none',
+  scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+})();
+</script>
+</body>
+</html>
