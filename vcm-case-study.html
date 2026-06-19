@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VCM Saudi Arabia — Case Study · Raheel Sheikh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/raheel.png">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --ink: #0e0d0c;
+  --ink2: #2a2826;
+  --muted: #8a8680;
+  --accent: #4a8c6f;
+  --accent-dark: #162e22;
+  --accent-mid: #2d6b50;
+  --accent-light: #eaf4ef;
+  --accent-warm: #c8b89a;
+  --line: rgba(14,13,12,0.10);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: math;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* HERO */
+.cs-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 48px;
+  background: #0e0d0c;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.13;
+  filter: grayscale(30%);
+}
+
+/* organic texture — nod to environmental theme */
+.cs-hero-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(74,140,111,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(45,107,80,0.08) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.cs-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+  padding-top: 140px;
+}
+
+.cs-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cs-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: #c6c6c6;
+}
+
+.cs-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 108px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  max-width: 950px;
+}
+
+.cs-hero-title em {
+  font-style: italic;
+  color: #c6c6c6;
+}
+
+.cs-hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 32px;
+}
+
+.cs-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 6px;
+}
+
+.cs-meta-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+}
+
+/* STATS BAR */
+.cs-stats-bar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cs-stat {
+  padding: 36px 48px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.cs-stat:last-child { border-right: none; }
+
+.cs-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+}
+
+/* BODY */
+.cs-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.cs-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-section:last-child { border-bottom: none; }
+
+.cs-section-inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-section-label {
+  position: sticky;
+  top: 90px;
+}
+
+.cs-section-num {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  margin-bottom: 10px;
+}
+
+.cs-section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.cs-section-title em { font-style: italic; color: var(--muted); }
+
+/* TEXT */
+.cs-lead {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.cs-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.cs-text:last-child { margin-bottom: 0; }
+.cs-text strong { color: var(--ink); font-weight: 500; }
+
+.cs-pullquote {
+  border-left: 2px solid #c6c6c6;
+  padding: 24px 32px;
+  margin: 40px 0;
+  background: #f5f5f5;
+  border-radius: 0 8px 8px 0;
+}
+.cs-pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* CONTEXT STRIP */
+.cs-context-strip {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.cs-context-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 8px;
+}
+
+.cs-context-value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* CHALLENGE GRID */
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-challenge-card {
+  background: #f5f5f5;
+  padding: 32px;
+}
+.cs-challenge-card.dark {
+  background: #2a2a2a;
+}
+.cs-challenge-card.dark .cs-challenge-title { color: var(--white); }
+.cs-challenge-card.dark .cs-challenge-body  { color: rgba(255,255,255,0.50); }
+.cs-challenge-card.dark .cs-challenge-icon  { color: #c6c6c6; }
+
+.cs-challenge-icon { margin-bottom: 20px; color: var(--muted); }
+
+.cs-challenge-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.cs-challenge-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* PHASE TIMELINE */
+.cs-timeline {
+  margin: 40px 0;
+  position: relative;
+  padding-left: 32px;
+}
+
+.cs-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--line);
+}
+
+.cs-timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+.cs-timeline-item:last-child { margin-bottom: 0; }
+
+.cs-timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c6c6c6;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1px #c6c6c6;
+}
+
+.cs-timeline-phase {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  margin-bottom: 8px;
+}
+
+.cs-timeline-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-timeline-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cs-timeline-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* AUDIENCE GRID */
+.cs-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-audience-card {
+  background: #f5f5f5;
+  padding: 28px 24px;
+  text-align: center;
+}
+.cs-audience-card:first-child {
+  background: #2a2a2a;
+}
+.cs-audience-card:first-child .cs-audience-title { color: var(--white); }
+.cs-audience-card:first-child .cs-audience-body  { color: rgba(255,255,255,0.48); }
+.cs-audience-card:first-child .cs-audience-icon  { color: #c6c6c6; }
+
+.cs-audience-icon {
+  margin-bottom: 16px;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+}
+
+.cs-audience-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cs-audience-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* DESIGN DECISIONS */
+.cs-decision {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.cs-decision::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: #c6c6c6;
+}
+
+.cs-decision-problem {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.cs-decision-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.cs-decision-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* PROCESS STEPS */
+.cs-process-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-step-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: #c6c6c6;
+  padding-top: 3px;
+}
+
+.cs-step-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-step-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cs-step-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* OUTCOME GRID */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-outcome-card {
+  background: #f5f5f5;
+  padding: 36px 28px;
+  text-align: center;
+}
+.cs-outcome-card.dark {
+  background: #2a2a2a;
+}
+.cs-outcome-card.dark .cs-outcome-num   { color: #c6c6c6; }
+.cs-outcome-card.dark .cs-outcome-label { color: rgba(255,255,255,0.88); }
+.cs-outcome-card.dark .cs-outcome-desc  { color: rgba(255,255,255,0.52); }
+
+.cs-outcome-num {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-outcome-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.cs-outcome-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* LESSONS */
+.cs-lesson {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-lesson-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c6c6c6;
+  margin-top: 8px;
+}
+
+.cs-lesson-body {
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--muted);
+}
+.cs-lesson-body strong { color: var(--ink); font-weight: 500; }
+
+/* LIVE BADGE */
+.cs-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(74,140,111,0.10);
+  border: 1px solid rgba(74,140,111,0.22);
+  border-radius: 100px;
+  padding: 10px 20px;
+  margin-bottom: 36px;
+  width: fit-content;
+}
+
+.cs-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #c6c6c6;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(74,140,111,0.20);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(74,140,111,0.20); }
+  50%       { box-shadow: 0 0 0 6px rgba(74,140,111,0.08); }
+}
+
+.cs-live-text {
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #b4b4b4;
+}
+
+/* NEXT */
+.cs-next {
+  background: #0e0d0c;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.cs-next-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 24px;
+}
+
+.cs-next-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.cs-next-title em { font-style: italic; color: #ccc; }
+
+.cs-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: background 0.3s, border-color 0.3s;
+}
+.cs-next-link:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.38);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left { font-family: var(--serif); font-size: 15px; font-weight: 300; }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ink); }
+
+/* CURSOR */
+#cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+#cursor-follower {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid rgba(14,13,12,0.18); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+}
+
+.reveal { opacity: 0; transform: translateY(32px); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .cs-hero { padding: 0 24px; }
+  .cs-hero-title { font-size: clamp(38px, 11vw, 64px); }
+  .cs-stats-bar { grid-template-columns: 1fr 1fr; }
+  .cs-stat { padding: 24px; }
+  .cs-body { padding: 0 24px; }
+  .cs-section { padding: 64px 0; }
+  .cs-section-inner { grid-template-columns: 1fr; gap: 28px; }
+  .cs-section-label { position: static; }
+  .cs-challenge-grid { grid-template-columns: 1fr; }
+  .cs-outcome-grid { grid-template-columns: 1fr 1fr; }
+  .cs-audience-grid { grid-template-columns: 1fr 1fr; }
+  .cs-context-strip { grid-template-columns: 1fr; gap: 20px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  #cursor, #cursor-follower { display: none; }
+  .cs-next { padding: 60px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Raheel Sheikh</a>
+  <a href="index.html#work" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All projects
+  </a>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-texture"></div>
+  <img class="cs-hero-img" src="assets/sastain.png" alt="">
+
+  <div class="cs-hero-content">
+
+    <div class="cs-live-badge">
+      <div class="cs-live-dot"></div>
+      <div class="cs-live-text">Platform currently live</div>
+    </div>
+
+    <div class="cs-hero-eyebrow">Carbon Market · Saudi Arabia · Bilingual · 2022 — 2023</div>
+
+    <h1 class="cs-hero-title">
+      Making carbon markets<br>
+      <em>legible</em> to the people<br>
+      who need them most.
+    </h1>
+
+    <div class="cs-hero-meta">
+      <div>
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">VCM — Voluntary Carbon Market, Saudi Arabia</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">My Role</div>
+        <div class="cs-meta-value">UI Designer — Team Project</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">4 months · 2 phased launches</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Type</div>
+        <div class="cs-meta-value">Freelance contract via Dubai agency</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Languages</div>
+        <div class="cs-meta-value">English and Arabic (bilingual)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-stats-bar">
+    <div class="cs-stat">
+      <div class="cs-stat-num">2.2M</div>
+      <div class="cs-stat-label">Tonnes of carbon credits auctioned</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">4</div>
+      <div class="cs-stat-label">Distinct user types served</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">2</div>
+      <div class="cs-stat-label">Phased launch — soft then full</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">Live</div>
+      <div class="cs-stat-label">Platform still active today</div>
+    </div>
+  </div>
+</header>
+
+<main class="cs-body">
+
+  <!-- 01 OVERVIEW -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">01</div>
+        <h2 class="cs-section-title">Over<em>view</em></h2>
+      </div>
+      <div>
+        <p class="cs-lead">VCM is Saudi Arabia's Voluntary Carbon Market — a platform that allows organizations to buy and sell verified carbon credits as part of their climate commitments. It sits at the intersection of finance, environmental policy, and international trade.</p>
+
+        <p class="cs-text">The challenge with carbon markets is not the trading itself — it is that most people, including many of the organizations that need to participate, do not fully understand what a carbon credit is, how it is priced, or why it matters. The design job was to make a complex financial and environmental system understandable and accessible without making it feel simplified or patronizing to the institutional buyers and government bodies who were the primary audience.</p>
+
+        <p class="cs-text">I was the UI designer on a team that also included researchers and a project lead. The research was done collectively. The visual design, component structure, bilingual layout, and all UI decisions were my responsibility. The project ran across two phases — a soft launch first, then a full platform launch — over four months in 2022 and 2023.</p>
+
+        <div class="cs-context-strip reveal">
+          <div>
+            <div class="cs-context-label">What VCM does</div>
+            <div class="cs-context-value">Operates Saudi Arabia's voluntary carbon credit market, enabling organizations to offset emissions by purchasing verified carbon reduction projects</div>
+          </div>
+          <div>
+            <div class="cs-context-label">Why the design mattered</div>
+            <div class="cs-context-value">Carbon markets only work if participants trust them. A confusing or opaque interface erodes that trust before a single trade happens</div>
+          </div>
+          <div>
+            <div class="cs-context-label">The starting point</div>
+            <div class="cs-context-value">A new build from scratch. No existing platform to reference or improve — we were designing the first version of something that had never existed in this form before</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 THE CHALLENGE -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">02</div>
+        <h2 class="cs-section-title">The<br><em>Challenge</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Building the first version of a financial platform in a specialist market has a very specific set of problems. You cannot rely on existing user habits because the product does not exist yet. You cannot benchmark directly because few comparable platforms exist in the region. And you are designing for an audience that spans from sophisticated institutional traders to government officials who may be encountering voluntary carbon markets for the first time.</p>
+
+        <div class="cs-pullquote">
+          <p>The biggest risk in a market platform is not bad design. It is design that makes users uncertain about what they are doing. Uncertainty kills participation.</p>
+        </div>
+
+        <div class="cs-challenge-grid reveal">
+          <div class="cs-challenge-card dark">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="cs-challenge-title">Making carbon markets understandable without dumbing them down</div>
+            <div class="cs-challenge-body">Carbon credits, verification standards, offset methodologies, auction mechanics — none of this is simple. The design had to surface the right level of information for each user type. Too simple and institutional buyers feel underserved. Too technical and new participants drop off before they engage.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="cs-challenge-title">Four very different user types, one platform</div>
+            <div class="cs-challenge-body">Carbon traders, government bodies, institutional buyers, and the general public all needed to find value in the same platform. Their information needs, technical literacy, and goals were completely different. The architecture had to serve all of them without making any one group feel like the design was built for someone else.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            </div>
+            <div class="cs-challenge-title">Bilingual at financial platform standards</div>
+            <div class="cs-challenge-body">A public website in English and Arabic sounds straightforward. For a financial platform operating in Saudi Arabia it is not. Financial terminology in Arabic has specific conventions. Number formatting, currency display, and data table reading direction all behave differently in RTL contexts. Both languages had to meet the standard a financial audience expects.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cs-challenge-title">Building trust through design on a brand new platform</div>
+            <div class="cs-challenge-body">No one had used VCM before because it did not exist. Trust in a financial platform usually comes from track record and reputation. We had neither. The design itself had to carry the credibility — through visual quality, information clarity, and a tone that communicated institutional seriousness from day one.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 USERS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">03</div>
+        <h2 class="cs-section-title">Under<em>standing</em><br>the Users</h2>
+      </div>
+      <div>
+        <p class="cs-text">The team's research identified four distinct user types, each arriving at the platform with a different level of familiarity with carbon markets, different information needs, and different definitions of what a successful visit looked like. Designing for the average of these users would have served none of them well.</p>
+
+        <div class="cs-audience-grid reveal">
+          <div class="cs-audience-card">
+            <div class="cs-audience-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="cs-audience-title">Carbon Traders</div>
+            <div class="cs-audience-body">Specialist buyers and sellers with deep market knowledge. They need data density, pricing history, credit verification details, and fast access to auction mechanics. They do not need explanations.</div>
+          </div>
+          <div class="cs-audience-card">
+            <div class="cs-audience-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="cs-audience-title">Government Bodies</div>
+            <div class="cs-audience-body">Regulatory stakeholders and policy teams. They need transparency, compliance information, market oversight data, and clear reporting. Trust and official positioning matter more than speed.</div>
+          </div>
+          <div class="cs-audience-card">
+            <div class="cs-audience-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="cs-audience-title">Institutional Buyers</div>
+            <div class="cs-audience-body">Large organizations buying carbon credits for ESG compliance or sustainability commitments. They need credibility signals, project information, and a clear buying process. They arrive with intent but often limited market knowledge.</div>
+          </div>
+          <div class="cs-audience-card">
+            <div class="cs-audience-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="cs-audience-title">General Public</div>
+            <div class="cs-audience-body">Interested citizens, researchers, and journalists. They need context, education, and a sense of the platform's purpose and scale. They are not buyers but they shape public trust in the market.</div>
+          </div>
+        </div>
+
+        <p class="cs-text">The research also surfaced a consistent concern across all user types: <strong>they did not want to feel confused about what they were doing in a financial context.</strong> For carbon traders that meant precise data. For government bodies it meant clear compliance language. For institutional buyers it meant an obvious path from interest to transaction. For the public it meant plain-language explanations that did not condescend.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 DESIGN PROCESS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">04</div>
+        <h2 class="cs-section-title">Design<br><em>Process</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">The two-phase structure was not just a launch strategy — it shaped how the design was built. Phase one had to be solid enough to establish credibility at soft launch while leaving room for the full feature set that phase two would introduce. That requires designing the full system up front, not just the first phase.</p>
+
+        <div class="cs-timeline reveal">
+          <div class="cs-timeline-item">
+            <div class="cs-timeline-dot"></div>
+            <div class="cs-timeline-phase">Phase One — Months 1 and 2</div>
+            <div class="cs-timeline-title">Soft launch — platform presence and market overview</div>
+            <div class="cs-timeline-body">The first phase established VCM's public presence and explained what the platform was and what it did. The design priority was credibility and clarity. Key sections included an overview of the voluntary carbon market, how VCM operated within Saudi Arabia's climate commitments, the types of credits available, and the process for registration. Visual tone was set here — everything that followed had to be consistent with the foundation built in phase one. The bilingual system was also finalized in this phase so phase two could build on it directly.</div>
+            <div class="cs-timeline-tags">
+              <span class="cs-timeline-tag">Visual System</span>
+              <span class="cs-timeline-tag">Information Architecture</span>
+              <span class="cs-timeline-tag">Bilingual Foundation</span>
+              <span class="cs-timeline-tag">Component Library</span>
+            </div>
+          </div>
+
+          <div class="cs-timeline-item">
+            <div class="cs-timeline-dot"></div>
+            <div class="cs-timeline-phase">Phase Two — Months 3 and 4</div>
+            <div class="cs-timeline-title">Full launch — auction platform, trading tools, and data transparency</div>
+            <div class="cs-timeline-body">Phase two brought the full trading and auction functionality into the design. This included carbon credit listings with project details and verification information, auction mechanics and bidding interfaces, market data displays, compliance documentation, and user dashboards for different account types. The challenge in phase two was taking the clean, editorial tone established in phase one and extending it into data-heavy screens without losing the clarity that made phase one work. Dense data and visual clarity are not naturally compatible — keeping them together required careful typographic hierarchy and a consistent color system for data states.</div>
+            <div class="cs-timeline-tags">
+              <span class="cs-timeline-tag">Auction Interface</span>
+              <span class="cs-timeline-tag">Data Visualization</span>
+              <span class="cs-timeline-tag">Trading Dashboard</span>
+              <span class="cs-timeline-tag">User Account Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 KEY DECISIONS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">05</div>
+        <h2 class="cs-section-title">Key Design<br><em>Decisions</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">These were not styling choices. They were structural decisions about how the platform communicated, what it prioritized, and how different users would experience the same information.</p>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 01 — Visual Tone</div>
+          <div class="cs-decision-title">Financial credibility over environmental enthusiasm</div>
+          <div class="cs-decision-body">Many sustainability platforms use heavy environmental imagery — forests, skies, earth tones — as their primary visual language. I chose not to. VCM is a financial market first. The people using it are making financial decisions. The visual system was built to communicate institutional credibility: clean typography, structured data layouts, a restrained green that referenced the environmental purpose without becoming a metaphor. Environmental imagery was used purposefully in context sections but never as a substitute for clear information design.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 02 — Progressive Disclosure for Complex Concepts</div>
+          <div class="cs-decision-title">Explaining carbon credits without interrupting experienced users</div>
+          <div class="cs-decision-body">Carbon market terminology is genuinely complex. Terms like additionality, vintage year, verification standard, and retirement are standard in the industry but unfamiliar to institutional buyers and the public. I used progressive disclosure throughout — key terms linked to clear explanations that appeared contextually without breaking the main flow. Experienced traders could ignore these. New participants could access them without the interface feeling like it was designed for beginners. Both groups got what they needed from the same screen.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 03 — Arabic Financial Standards</div>
+          <div class="cs-decision-title">Numbers, currency, and data tables built for Arabic financial conventions</div>
+          <div class="cs-decision-body">Arabic financial interfaces have specific conventions that differ from English. Number display, decimal separators, currency positioning, and table reading direction all follow different rules. More importantly, financial data tables in Arabic are not simply mirrored versions of English tables — the logic of how a user scans a row of data changes with reading direction, which affects which columns need visual emphasis. I rebuilt the data table components specifically for Arabic reading patterns rather than adapting the English versions.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 04 — Transparency as a Design Principle</div>
+          <div class="cs-decision-title">Showing how credits are verified, not just that they are</div>
+          <div class="cs-decision-body">Trust in a carbon market depends entirely on whether participants believe the credits are real and the methodology is sound. Rather than treating verification as a footnote, I made it a visible part of every credit listing. Project origin, verification standard, auditor, vintage year, and retirement status were all surfaced clearly rather than buried in documentation. This was a deliberate choice to prioritize transparency over visual simplicity, because in this context transparency is what enables participation.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 05 — Soft Launch as a Design Test</div>
+          <div class="cs-decision-title">Building phase one to validate the visual system before phase two committed to it</div>
+          <div class="cs-decision-body">The phased launch structure was not just a business decision — it was a design advantage. Phase one let the visual system, typography, and bilingual architecture be tested with real users on a live platform before the more complex trading screens of phase two were finalized. Feedback from the soft launch informed three component refinements in phase two, particularly in how market data was labeled and how auction status was communicated. Designing phase two after real users had seen phase one produced better work than if both phases had been designed simultaneously.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 OUTCOMES -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">06</div>
+        <h2 class="cs-section-title">Out<em>comes</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">The platform launched, operated, and handled real market activity at scale. The numbers below reflect VCM's performance since launch — they are market outcomes, not design metrics. But a carbon market only generates these numbers if enough participants trust the platform enough to engage with it. The design's job was to create that foundation of trust.</p>
+
+        <div class="cs-outcome-grid reveal">
+          <div class="cs-outcome-card dark">
+            <div class="cs-outcome-num">2.2M</div>
+            <div class="cs-outcome-label">Tonnes auctioned</div>
+            <div class="cs-outcome-desc">Over 2.2 million tonnes of carbon credits auctioned through VCM since launch — a significant volume for a first-year voluntary carbon market in the region</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">4</div>
+            <div class="cs-outcome-label">User types served</div>
+            <div class="cs-outcome-desc">Traders, government bodies, institutional buyers, and the public all served through a single platform with role-appropriate information architecture</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">2</div>
+            <div class="cs-outcome-label">Phases delivered</div>
+            <div class="cs-outcome-desc">Soft launch and full launch both delivered on schedule within a 4-month project window, with phase two refined by real user feedback from phase one</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">Bilingual</div>
+            <div class="cs-outcome-label">Arabic and English</div>
+            <div class="cs-outcome-desc">Both language versions built to financial platform standards, with Arabic data components designed from the ground up for RTL financial conventions</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">Live</div>
+            <div class="cs-outcome-label">Still active</div>
+            <div class="cs-outcome-desc">The platform is still live and operational, which means the design system has proven durable enough to support ongoing market activity beyond the initial launch</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">First</div>
+            <div class="cs-outcome-label">In the region</div>
+            <div class="cs-outcome-desc">VCM was a new build with no regional precedent — the design had to establish conventions for a category that did not previously exist in Saudi Arabia's market</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 LESSONS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">07</div>
+        <h2 class="cs-section-title">What I<br><em>Learned</em></h2>
+      </div>
+      <div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Domain complexity is a design problem, not a content problem.</strong> Carbon markets are hard to understand. The instinct is to fix that with better copywriting. But the design itself carries as much explanatory power as the words — through what it surfaces first, what it groups together, what it labels clearly, and what it hides until the right moment. You cannot write your way out of a structural information problem.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Financial platforms need to earn trust before they earn engagement.</strong> Nobody trades on a platform they do not trust, regardless of how good the pricing is. Every visual decision — the typography quality, the data accuracy, the consistency of the interface — contributes to or erodes that trust. This made the design system work more consequential than it might seem on a less high-stakes product.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Phased launches are a design tool, not just a business strategy.</strong> Launching phase one gave us real data before phase two was finalized. That data changed three components. A design that is informed by real users performing real tasks on a live product is always better than one that is informed only by research and assumptions. When you have the option to phase, use it as a design advantage.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>RTL financial interfaces require their own design logic, not just mirroring.</strong> This came up again after Sharjah Municipality, and it confirmed something I already believed: any Arabic interface that starts as an English interface and then gets adapted will have structural problems. The reading logic changes too fundamentally to be solved by flipping a layout. You have to start from Arabic and design outward.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Designing for a category you are not expert in forces better questions.</strong> I am not a carbon market specialist. That meant I had to question every assumption about what users understood and what they needed explained. That questioning produced a better information architecture than if I had assumed familiarity. Not knowing a domain deeply sometimes makes you a better designer of its products, because you ask the questions that expert insiders have stopped asking.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="cs-next">
+  <div class="cs-next-label">Back to portfolio</div>
+  <div class="cs-next-title">See all<br><em>projects</em></div>
+  <a href="index.html#work" class="cs-next-link">
+    View all work
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-left">Raheel Sheikh © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/raheelsheikh/">LinkedIn</a></li>
+    <li><a href="https://www.behance.net/s4raheel">Behance</a></li>
+    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Resume</a></li>
+  </ul>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function () {
+gsap.registerPlugin(ScrollTrigger);
+
+const cursor   = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mx = -200, my = -200, fx = -200, fy = -200;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.set(cursor, { x: mx, y: my });
+});
+(function tick() {
+  fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+  gsap.set(follower, { x: fx, y: fy });
+  requestAnimationFrame(tick);
+})();
+
+gsap.from('.cs-live-badge',   { opacity: 0, y: 16, duration: 0.7, ease: 'power3.out', delay: 0.2 });
+gsap.from('.cs-hero-eyebrow', { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.4 });
+gsap.from('.cs-hero-title',   { opacity: 0, y: 44, duration: 1.1, ease: 'power3.out', delay: 0.6 });
+gsap.from('.cs-hero-meta',    { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.9 });
+gsap.from('.cs-stat',         { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out', stagger: 0.10, delay: 1.1 });
+
+gsap.to('.cs-hero-img', {
+  yPercent: 22, ease: 'none',
+  scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-section-label').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, x: -20, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-process-step, .cs-timeline-item').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', delay: i * 0.05,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-outcome-card').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 20, duration: 0.6, ease: 'power2.out', delay: i * 0.08,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-lesson').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, x: -16, duration: 0.65, ease: 'power2.out', delay: i * 0.06,
+    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-audience-card').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 20, duration: 0.6, ease: 'power2.out', delay: i * 0.08,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+})();
+</script>
+</body>
+</html>

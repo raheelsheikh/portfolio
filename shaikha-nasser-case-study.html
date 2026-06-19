@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaikha Nasser Al Nowais — Case Study · Raheel Sheikh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/raheel.png">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --ink: #0e0d0c;
+  --ink2: #2a2826;
+  --muted: #8a8680;
+  --accent: #c8b89a;
+  --accent2: #e2d4c0;
+  --accent-dark: #2c2318;
+  --accent-light: #f5f0e8;
+  --line: rgba(14,13,12,0.10);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: math;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* HERO */
+.cs-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 48px;
+  background: #0e0d0c;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  filter: grayscale(20%);
+}
+
+/* Diagonal gold stripe texture */
+.cs-hero-texture {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 60px,
+    rgba(200,184,154,0.03) 60px,
+    rgba(200,184,154,0.03) 61px
+  );
+  z-index: 1;
+}
+
+.cs-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+  padding-top: 140px;
+}
+
+.cs-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cs-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: #ccc;
+}
+
+.cs-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 108px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  max-width: 950px;
+}
+
+.cs-hero-title em {
+  font-style: italic;
+  color: #ccc;
+}
+
+/* WIN BADGE */
+.cs-win-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(168,168,168,0.12);
+  border: 1px solid rgba(168,168,154,0.25);
+  border-radius: 100px;
+  padding: 10px 20px;
+  margin-bottom: 36px;
+  width: fit-content;
+}
+
+.cs-win-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ccc;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(200,184,154,0.20);
+}
+
+.cs-win-text {
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.cs-hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 32px;
+}
+
+.cs-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.48);
+  margin-bottom: 6px;
+}
+
+.cs-meta-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+}
+
+/* STATS BAR */
+.cs-stats-bar {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cs-stat {
+  padding: 36px 48px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.cs-stat:last-child { border-right: none; }
+
+.cs-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.48);
+}
+
+/* BODY */
+.cs-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.cs-section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-section:last-child { border-bottom: none; }
+
+.cs-section-inner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-section-label {
+  position: sticky;
+  top: 90px;
+}
+
+.cs-section-num {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.cs-section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.cs-section-title em { font-style: italic; color: var(--muted); }
+
+/* TEXT */
+.cs-lead {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.cs-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.cs-text:last-child { margin-bottom: 0; }
+.cs-text strong { color: var(--ink); font-weight: 500; }
+
+.cs-pullquote {
+  border-left: 2px solid #ccc;
+  padding: 24px 32px;
+  margin: 40px 0;
+  background: #e9e9e9;
+  border-radius: 0 8px 8px 0;
+}
+.cs-pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* CONTEXT STRIP */
+.cs-context-strip {
+  background: #252525;
+  border-radius: 12px;
+  padding: 40px;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.cs-context-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.48);
+  margin-bottom: 8px;
+}
+
+.cs-context-value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* CHALLENGE GRID */
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-challenge-card {
+  background: #eee;
+  padding: 32px;
+}
+.cs-challenge-card.dark {
+  background: #252525;
+}
+.cs-challenge-card.dark .cs-challenge-title { color: var(--white); }
+.cs-challenge-card.dark .cs-challenge-body  { color: rgba(255,255,255,0.50); }
+.cs-challenge-card.dark .cs-challenge-icon  { color: #ccc; }
+
+.cs-challenge-icon { margin-bottom: 20px; color: var(--muted); }
+
+.cs-challenge-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.cs-challenge-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* LANGUAGE FLAGS ROW */
+.cs-languages {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.cs-lang-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: var(--ink2);
+  font-weight: 300;
+}
+
+.cs-lang-flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cs-lang-note {
+  font-size: 11px;
+  color: #ccc;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+
+/* PROCESS STEPS */
+.cs-process-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-step-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: #ccc;
+  padding-top: 3px;
+}
+
+.cs-step-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cs-step-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-step-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.cs-step-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* SITE SECTIONS GRID */
+.cs-sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-sitemap-card {
+  background: #eee;
+  padding: 28px;
+}
+
+.cs-sitemap-card:first-child {
+  background: #252525;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.cs-sitemap-num {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cs-sitemap-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cs-sitemap-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cs-sitemap-card:first-child .cs-sitemap-title { color: var(--white); }
+.cs-sitemap-card:first-child .cs-sitemap-body  { color: rgba(255,255,255,0.48); }
+
+/* DESIGN DECISIONS */
+.cs-decision {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-decision::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: #ccc;
+}
+
+.cs-decision-problem {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.cs-decision-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.cs-decision-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* OUTCOME GRID */
+.cs-outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin: 40px 0;
+}
+
+.cs-outcome-card {
+  background: #eee;
+  padding: 36px 28px;
+  text-align: center;
+}
+.cs-outcome-card.dark {
+  background: #252525;
+}
+.cs-outcome-card.dark .cs-outcome-num   { color: #ccc; }
+.cs-outcome-card.dark .cs-outcome-label { color: rgba(255,255,255,0.48); }
+.cs-outcome-card.dark .cs-outcome-desc  { color: rgba(255,255,255,0.52); }
+
+.cs-outcome-num {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cs-outcome-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.cs-outcome-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* WIN SECTION */
+.cs-win-section {
+  background: #252525;
+  border-radius: 12px;
+  padding: 56px 48px;
+  margin: 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-win-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(200,184,154,0.03) 40px,
+    rgba(200,184,154,0.03) 41px
+  );
+}
+
+.cs-win-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.cs-win-headline {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.cs-win-headline em { color: #ccc; }
+
+.cs-win-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.48);
+  font-weight: 300;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* LESSONS */
+.cs-lesson {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.cs-lesson-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-top: 8px;
+}
+
+.cs-lesson-body {
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--muted);
+}
+.cs-lesson-body strong { color: var(--ink); font-weight: 500; }
+
+/* IMAGE BLOCK */
+.cs-image-block {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e9e9e9;
+}
+.cs-image-block img { width: 100%; display: block; }
+.cs-image-caption {
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* NEXT */
+.cs-next {
+  background: #0e0d0c;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.cs-next-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.48);
+  margin-bottom: 24px;
+}
+
+.cs-next-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.cs-next-title em { font-style: italic; color: #ccc; }
+
+.cs-next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: background 0.3s, border-color 0.3s;
+}
+.cs-next-link:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.38);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left { font-family: var(--serif); font-size: 15px; font-weight: 300; }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--ink); }
+
+/* CURSOR */
+#cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+#cursor-follower {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid rgba(14,13,12,0.18); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+}
+
+.reveal { opacity: 0; transform: translateY(32px); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .cs-hero { padding: 0 24px; }
+  .cs-hero-title { font-size: clamp(38px, 11vw, 64px); }
+  .cs-stats-bar { grid-template-columns: 1fr 1fr; }
+  .cs-stat { padding: 24px; }
+  .cs-body { padding: 0 24px; }
+  .cs-section { padding: 64px 0; }
+  .cs-section-inner { grid-template-columns: 1fr; gap: 28px; }
+  .cs-section-label { position: static; }
+  .cs-challenge-grid { grid-template-columns: 1fr; }
+  .cs-outcome-grid { grid-template-columns: 1fr 1fr; }
+  .cs-context-strip { grid-template-columns: 1fr; gap: 20px; }
+  .cs-sitemap-grid { grid-template-columns: 1fr; }
+  .cs-sitemap-card:first-child { grid-template-columns: 1fr; }
+  .cs-win-section { padding: 40px 24px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  #cursor, #cursor-follower { display: none; }
+  .cs-next { padding: 60px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Raheel Sheikh</a>
+  <a href="index.html#work" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All projects
+  </a>
+</nav>
+
+<header class="cs-hero">
+  <div class="cs-hero-texture"></div>
+  <img class="cs-hero-img" src="assets/shaikha.png" alt="">
+
+  <div class="cs-hero-content">
+    <div class="cs-win-badge">
+      <div class="cs-win-dot"></div>
+      <div class="cs-win-text">She won — currently serving as UN Tourism Secretary-General</div>
+    </div>
+
+    <div class="cs-hero-eyebrow">International Campaign · 5 Languages · UN Tourism</div>
+
+    <h1 class="cs-hero-title">
+      Designing the campaign<br>
+      that helped put a UAE<br>
+      leader on the <em>world stage.</em>
+    </h1>
+
+    <div class="cs-hero-meta">
+      <div>
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">Shaikha Nasser Al Nowais Campaign</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">My Role</div>
+        <div class="cs-meta-value">Solo Designer — Research to Delivery</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Year</div>
+        <div class="cs-meta-value">April 2025</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">4 weeks, tight election deadline</div>
+      </div>
+      <div>
+        <div class="cs-meta-label">Languages</div>
+        <div class="cs-meta-value">English, Arabic, French, Portuguese, Spanish</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-stats-bar">
+    <div class="cs-stat">
+      <div class="cs-stat-num">5</div>
+      <div class="cs-stat-label">Languages, one design</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">4wk</div>
+      <div class="cs-stat-label">Research to live site</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">1st</div>
+      <div class="cs-stat-label">Draft approved by client</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-num">Won</div>
+      <div class="cs-stat-label">UN Tourism Secretary-General</div>
+    </div>
+  </div>
+</header>
+
+<main class="cs-body">
+
+  <!-- 01 OVERVIEW -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">01</div>
+        <h2 class="cs-section-title">Over<em>view</em></h2>
+      </div>
+      <div>
+        <p class="cs-lead">In April 2025, Shaikha Nasser Al Nowais was running for Secretary-General of UN Tourism — one of the most prominent international positions in global tourism governance. Her campaign needed a website. They came to me with four weeks until the election.</p>
+
+        <p class="cs-text">This was a category of work I had never done before. Campaign websites for international elections at UN level are a very specific thing. The audience is not citizens scrolling social media — it is tourism ministers, government delegations, international press, and UN member state representatives. Every word and every design choice would be seen by people deciding whether to back a candidate.</p>
+
+        <p class="cs-text">I had no brief template to follow, no reference from previous work, and no senior designer to check with. I was the only designer on the project. So I did what you do when you do not have experience: I went and got it, fast. Research, decisions, design — all in parallel, all under a hard deadline that had no flexibility.</p>
+
+        <div class="cs-pullquote">
+          <p>The deadline was the election. There is no version of "we need a few more days" when a candidate is on a ballot.</p>
+        </div>
+
+        <div class="cs-context-strip reveal">
+          <div>
+            <div class="cs-context-label">The candidate</div>
+            <div class="cs-context-value">Shaikha Nasser Al Nowais, UAE — running for Secretary-General of UN Tourism, the global body responsible for responsible and sustainable tourism development</div>
+          </div>
+          <div>
+            <div class="cs-context-label">The audience</div>
+            <div class="cs-context-value">International government delegates, UN member state representatives, global tourism ministers, international press, and the public across five language regions</div>
+          </div>
+          <div>
+            <div class="cs-context-label">What was needed</div>
+            <div class="cs-context-value">A campaign website that communicated credibility, vision, and international readiness — in five languages, built from scratch, live before the vote</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 CHALLENGE -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">02</div>
+        <h2 class="cs-section-title">The<br><em>Challenge</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Three things made this project harder than any other website I had designed. The category was new to me. The audience was unusually high-stakes. And the clock was already running when the brief arrived.</p>
+
+        <div class="cs-challenge-grid reveal">
+          <div class="cs-challenge-card dark">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            </div>
+            <div class="cs-challenge-title">An audience I had never designed for</div>
+            <div class="cs-challenge-body">UN delegates and government ministers assess credibility differently from consumers. The design could not look like a startup landing page or a corporate brochure. It needed to project institutional seriousness without being cold, and warmth without being informal. That balance required research I had to do from scratch.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cs-challenge-title">Five languages with real typographic differences</div>
+            <div class="cs-challenge-body">Arabic reads right to left. French, Portuguese, and Spanish use diacritics that affect line spacing and text rendering. Each language version had to feel native and professionally produced, not like a machine translation dropped into the same layout. The design had to hold up structurally across all five.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="cs-challenge-title">Four weeks from zero to live</div>
+            <div class="cs-challenge-body">Research, concept, design, content integration, multilingual testing, and launch — all inside a month. There was no room for multiple design directions or extended feedback rounds. The first direction had to be the right one, which meant the research phase had to be sharp enough to eliminate wrong directions before a single screen was opened.</div>
+          </div>
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="cs-challenge-title">No comparable UAE precedent to reference</div>
+            <div class="cs-challenge-body">Previous UAE candidates running for international UN-level positions had either no web presence or weak ones. There was no local example to learn from. I had to look at how other national campaigns for international bodies were designed globally and then adapt that understanding to this specific candidate, context, and audience.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 RESEARCH -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">03</div>
+        <h2 class="cs-section-title">Research<br><em>Process</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">When you have never designed something before, the first thing you do is go find people who have and study what worked. I spent the first days entirely in research — not designing, not even sketching, just learning the category.</p>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">01</div>
+          <div>
+            <div class="cs-step-title">Study comparable international campaigns</div>
+            <div class="cs-step-body">I looked at campaign websites and digital presences for candidates who had run for senior international roles at the UN, UNESCO, WHO, and similar bodies. I was looking for patterns in how credibility was communicated visually, how vision content was structured, and how multilingual experiences were handled without one language feeling primary. The consistent pattern across successful campaigns was a tone that was authoritative but human — formal enough for institutional audiences, personal enough to build emotional connection.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Competitive Benchmarking</span>
+              <span class="cs-step-tag">Category Research</span>
+              <span class="cs-step-tag">Visual Pattern Analysis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">02</div>
+          <div>
+            <div class="cs-step-title">Understand the candidate's positioning</div>
+            <div class="cs-step-body">Before designing anything I needed to understand what Shaikha Nasser stood for, what made her candidacy distinct, and what the campaign wanted international audiences to feel when they arrived at the site. I worked through the brief content carefully — her background in sustainable tourism, her record in the UAE, her vision for UN Tourism's direction. These became the design inputs. The colour system, the typographic tone, the content hierarchy — all of it came from understanding the candidate's positioning first.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Brief Analysis</span>
+              <span class="cs-step-tag">Candidate Positioning</span>
+              <span class="cs-step-tag">Audience Mapping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-process-step">
+          <div class="cs-step-num">03</div>
+          <div>
+            <div class="cs-step-title">Map the multilingual requirements</div>
+            <div class="cs-step-body">Arabic was already familiar territory. For French, Portuguese, and Spanish I researched the typographic norms, character sets, and average text length expansion relative to English. French and Spanish text typically runs 15 to 25% longer than English. Portuguese can run up to 30% longer in certain constructions. Every layout had to absorb this expansion without breaking. I tested critical UI elements — navigation labels, call to action buttons, section headings — in all five languages before finalising any layout decisions.</div>
+            <div class="cs-step-tags">
+              <span class="cs-step-tag">Multilingual Typography</span>
+              <span class="cs-step-tag">RTL / LTR Layout Planning</span>
+              <span class="cs-step-tag">Text Expansion Testing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 SITE STRUCTURE -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">04</div>
+        <h2 class="cs-section-title">Site<br><em>Structure</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">Campaign websites for international candidates have a very specific information job to do. A UN delegate visiting the site needs to answer three questions fast: who is this person, what do they stand for, and why should we back them. Every section of the site was designed to answer one of those questions.</p>
+
+        <div class="cs-sitemap-grid reveal">
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Hero</div>
+            <div class="cs-sitemap-title">First impression</div>
+            <div class="cs-sitemap-body">Who she is, what position she is running for, and the core campaign message — communicated in under 5 seconds. Optimised for the international press and delegate who arrives knowing nothing.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Biography</div>
+            <div class="cs-sitemap-title">Credibility and track record</div>
+            <div class="cs-sitemap-body">Her career, achievements, and relevant experience in tourism governance — structured to read quickly with key milestones surfaced prominently rather than buried in a paragraph.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Vision</div>
+            <div class="cs-sitemap-title">The platform</div>
+            <div class="cs-sitemap-body">What she will do as Secretary-General. Her policy positions and priorities for UN Tourism. This section needed to feel substantive and specific, not generic aspiration.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Endorsements</div>
+            <div class="cs-sitemap-title">Third-party credibility</div>
+            <div class="cs-sitemap-body">Support from governments, tourism bodies, and international figures. One of the most-read sections by delegates who are assessing which candidate has the backing to be effective.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Media</div>
+            <div class="cs-sitemap-title">Press, interviews, video</div>
+            <div class="cs-sitemap-body">News articles and video clips — a resource centre for journalists and researchers, and a signal of international media presence to delegates assessing profile.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">News</div>
+            <div class="cs-sitemap-title">Campaign updates</div>
+            <div class="cs-sitemap-body">A live section updated throughout the campaign period with events, statements, and coverage — giving repeat visitors a reason to return and signalling an active, well-organised campaign.</div>
+          </div>
+          <div class="cs-sitemap-card">
+            <div class="cs-sitemap-num">Contact</div>
+            <div class="cs-sitemap-title">Direct reach</div>
+            <div class="cs-sitemap-body">A clean contact section for press, delegates, and government representatives to reach the campaign directly. Kept simple — the audience expects professionalism, not a complex form.</div>
+          </div>
+        </div>
+
+        <p class="cs-text">The multilingual switcher was placed prominently in the navigation on every page. Switching languages preserved the user's current position within the site rather than returning them to the homepage — an important detail for a UN delegate who might want to re-read a section of the Vision page in their native language.</p>
+
+        <div class="cs-languages">
+          <div class="cs-lang-pill">
+            <span class="cs-lang-flag">🇬🇧</span>
+            English
+            <span class="cs-lang-note">Primary</span>
+          </div>
+          <div class="cs-lang-pill">
+            <span class="cs-lang-flag">🇦🇪</span>
+            Arabic
+            <span class="cs-lang-note">RTL</span>
+          </div>
+          <div class="cs-lang-pill">
+            <span class="cs-lang-flag">🇫🇷</span>
+            French
+          </div>
+          <div class="cs-lang-pill">
+            <span class="cs-lang-flag">🇧🇷</span>
+            Portuguese
+          </div>
+          <div class="cs-lang-pill">
+            <span class="cs-lang-flag">🇪🇸</span>
+            Spanish
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 DESIGN DECISIONS -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">05</div>
+        <h2 class="cs-section-title">Design<br><em>Decisions</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">The first draft was approved without revisions. That does not happen by accident. It happens when research is thorough enough that the design decisions are already justified before anyone sees the screens. These were the decisions that mattered most.</p>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 01 — Visual Tone</div>
+          <div class="cs-decision-title">Institutional authority, not corporate polish</div>
+          <div class="cs-decision-body">A campaign website for a UN candidacy sits in a very specific position between government formality and human warmth. I chose a typographic-led design with generous white space, a restrained colour palette anchored in deep navy and warm gold, and photography given prominent space rather than being used as decoration. The result reads as serious without being cold. It signals that the candidate is internationally minded — not a regional official with a website, but someone already operating at that level of the world.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 02 — Colour System</div>
+          <div class="cs-decision-title">A palette that worked across all five language contexts</div>
+          <div class="cs-decision-body">Color carries cultural meaning and that meaning shifts across audiences. The palette I chose had to work for Arabic-speaking audiences in the Gulf, French-speaking audiences in Africa and Europe, Spanish and Portuguese audiences in Latin America, and English-speaking audiences globally. Deep navy for trust and authority, warm gold for the UAE identity and international distinction, and clean white for clarity. Each of those associations holds across the target cultural contexts without carrying conflicting meaning.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 03 — Arabic as Equal, Not Secondary</div>
+          <div class="cs-decision-title">The Arabic version was designed in parallel, not translated after</div>
+          <div class="cs-decision-body">Because Arabic and RTL layout was already part of my daily work at Sharjah Municipality, I designed the Arabic version simultaneously with English rather than designing English first and then adapting. This meant the Arabic experience did not feel like a translation — the typographic scale was adjusted for Arabic character proportions, the layout rhythm was rebuilt for right-to-left reading, and the navigation structure was verified in Arabic before being finalized. For a UAE candidate addressing Arab-speaking member states, this mattered.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 04 — Content Hierarchy on the Vision Page</div>
+          <div class="cs-decision-title">Specific commitments over broad aspiration</div>
+          <div class="cs-decision-body">Campaign vision pages typically fill space with aspirational language that says nothing specific. UN delegates have seen hundreds of these. I pushed for the vision section to open with concrete priority areas stated clearly, with the broader context supporting them rather than leading. This made the page readable in 60 seconds by someone who was skimming, while still providing depth for anyone who wanted it. The structure was: clear statement, brief explanation, implication for UN Tourism's direction — repeated per priority area.</div>
+        </div>
+
+        <div class="cs-decision reveal">
+          <div class="cs-decision-problem">Decision 05 — Why the First Draft Was Approved</div>
+          <div class="cs-decision-title">Research reduced the variables before the design started</div>
+          <div class="cs-decision-body">The first draft being approved without revisions came down to one thing: by the time I opened Figma, there were very few genuine unknowns left. The research had already answered the questions of visual tone, content priority, colour system, and typographic approach. The design was not a creative proposal — it was the execution of conclusions I had already reached through research. When a client sees a first draft that is clearly not guesswork, they feel it immediately. That is what happened.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 OUTCOMES -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">06</div>
+        <h2 class="cs-section-title">Out<em>comes</em></h2>
+      </div>
+      <div>
+        <p class="cs-text">The most honest measure of whether a campaign website did its job is whether the campaign won. This one did.</p>
+
+        <div class="cs-win-section reveal">
+          <div class="cs-win-label">Campaign Result</div>
+          <div class="cs-win-headline">Shaikha Nasser Al Nowais<br>is now <em>UN Tourism Secretary-General.</em></div>
+          <div class="cs-win-sub">She won the election and is currently serving as Secretary-General of UN Tourism, the global body responsible for promoting responsible, sustainable and universally accessible tourism.</div>
+        </div>
+
+        <div class="cs-outcome-grid reveal">
+          <div class="cs-outcome-card dark">
+            <div class="cs-outcome-num">5</div>
+            <div class="cs-outcome-label">Languages delivered</div>
+            <div class="cs-outcome-desc">English, Arabic, French, Portuguese, and Spanish — each designed to feel native, not translated</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">4wk</div>
+            <div class="cs-outcome-label">Research to live</div>
+            <div class="cs-outcome-desc">Full research, design, content integration, multilingual testing, and deployment inside a single month with a hard election deadline</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">1st</div>
+            <div class="cs-outcome-label">Draft approved</div>
+            <div class="cs-outcome-desc">The first design direction was approved by the client without revisions — a direct result of research-led decision making before the design started</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">Global</div>
+            <div class="cs-outcome-label">Audience reached</div>
+            <div class="cs-outcome-desc">Significant traffic from international delegates, government representatives, and press across multiple regions during the active campaign period</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">Solo</div>
+            <div class="cs-outcome-label">Entire design</div>
+            <div class="cs-outcome-desc">Research, visual direction, all five language versions, content design, and developer handoff — done by one designer</div>
+          </div>
+          <div class="cs-outcome-card">
+            <div class="cs-outcome-num">Loved</div>
+            <div class="cs-outcome-label">Client feedback</div>
+            <div class="cs-outcome-desc">Shaikha Nasser personally appreciated and praised the design — rare feedback on a first project in a new category</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 WHAT I LEARNED -->
+  <div class="cs-section">
+    <div class="cs-section-inner">
+      <div class="cs-section-label">
+        <div class="cs-section-num">07</div>
+        <h2 class="cs-section-title">What I<br><em>Learned</em></h2>
+      </div>
+      <div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Not knowing a category is not the same as being unqualified for it.</strong> I had never designed a campaign website before. That gap was closed in days through focused research. The design skills transferred completely. What you need when entering a new category is not prior experience in that exact category — it is a fast, honest research process and the discipline to let what you find actually change your decisions.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>First drafts get approved when the brief is fully understood first.</strong> The client did not have to ask for revisions because there was nothing to revise — the design was already the answer to the right question. Most revision cycles happen because the designer started designing before they finished understanding. Research is not a phase before the real work. It is the most important part of the real work.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Multilingual design is a structural problem, not a content problem.</strong> The challenge of five languages was not translation — the client handled that. The challenge was building layouts and typographic systems that held together when the same content was 30% longer in Portuguese than in English, and flipped entirely in Arabic. That requires solving for the hardest case first and then testing everything else against it.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>Hard deadlines make you a better designer.</strong> A four-week timeline with no flexibility eliminates a specific category of bad habit: endless exploration, unnecessary iterations, and decision avoidance dressed up as thoroughness. When the deadline is fixed, you become very honest very quickly about what is actually a meaningful design decision and what is just procrastination.</div>
+        </div>
+        <div class="cs-lesson reveal">
+          <div class="cs-lesson-dot"></div>
+          <div class="cs-lesson-body"><strong>The work you do in new categories compounds.</strong> Before this project, I had never designed for a political or international campaign audience. Now I have, and the thinking from that experience informs how I approach any project involving institutional credibility, multilingual global audiences, or high-stakes one-shot deadlines. New categories do not just add to your portfolio. They add to how you think.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="cs-next">
+  <div class="cs-next-label">Next Case Study</div>
+  <div class="cs-next-title">VCM<br><em>Saudi Arabia</em></div>
+  <a href="index.html#work" class="cs-next-link">
+    Back to all projects
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-left">Raheel Sheikh © 2026</div>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/raheelsheikh/">LinkedIn</a></li>
+    <li><a href="https://www.behance.net/s4raheel">Behance</a></li>
+    <li><a href="assets/Raheel-ResumeUXUIDesigner.pdf">Resume</a></li>
+  </ul>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function () {
+gsap.registerPlugin(ScrollTrigger);
+
+const cursor   = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mx = -200, my = -200, fx = -200, fy = -200;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.set(cursor, { x: mx, y: my });
+});
+(function tick() {
+  fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+  gsap.set(follower, { x: fx, y: fy });
+  requestAnimationFrame(tick);
+})();
+
+gsap.from('.cs-win-badge',    { opacity: 0, y: 16, duration: 0.7, ease: 'power3.out', delay: 0.2 });
+gsap.from('.cs-hero-eyebrow', { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.4 });
+gsap.from('.cs-hero-title',   { opacity: 0, y: 44, duration: 1.1, ease: 'power3.out', delay: 0.6 });
+gsap.from('.cs-hero-meta',    { opacity: 0, y: 20, duration: 0.9, ease: 'power3.out', delay: 0.9 });
+gsap.from('.cs-stat',         { opacity: 0, y: 20, duration: 0.7, ease: 'power3.out', stagger: 0.10, delay: 1.1 });
+
+gsap.to('.cs-hero-img', {
+  yPercent: 22, ease: 'none',
+  scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: true }
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-section-label').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, x: -20, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-process-step').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', delay: i * 0.05,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-lang-pill').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, scale: 0.88, duration: 0.45, ease: 'back.out(1.6)', delay: i * 0.07,
+    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-outcome-card').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, y: 20, duration: 0.6, ease: 'power2.out', delay: i * 0.08,
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.cs-lesson').forEach((el, i) => {
+  gsap.from(el, {
+    opacity: 0, x: -16, duration: 0.65, ease: 'power2.out', delay: i * 0.06,
+    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+})();
+</script>
+</body>
+</html>
