@@ -1032,6 +1032,7 @@ h4 {
   color: rgba(255,255,255,0.09);
 }
 
+
 /* =============================================
    ABOUT
    ============================================= */
@@ -1041,17 +1042,160 @@ h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start;
+  overflow: hidden;
 }
 
 .about-left { position: sticky; top: 120px; }
 
 .about-portrait {
-  width: 100%; aspect-ratio: 3/4;
-  overflow: hidden; position: relative;
-  filter: blur(1px); background: #fafaf8;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: visible;
+  isolation: isolate;
 }
 
-.about-portrait canvas { width: 100%; height: 100%; display: block; }
+.about-portrait-frame {
+  position: absolute;
+  inset: 8% 7% 4%;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.74), rgba(230,226,217,0.42)),
+    #ece7dd;
+  box-shadow: 0 38px 100px rgba(14,13,12,0.15);
+  transform-origin: center;
+}
+
+.about-portrait-frame::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  z-index: 3;
+  border: 1px solid rgba(255,255,255,0.42);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.about-portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, transparent 48%, rgba(14,13,12,0.34)),
+    radial-gradient(circle at 58% 18%, rgba(255,255,255,0.32), transparent 34%);
+  pointer-events: none;
+}
+
+.about-portrait-img {
+  position: absolute;
+  inset: -8% -8% -4%;
+  width: 116%;
+  height: 112%;
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.08);
+  will-change: transform;
+}
+
+.about-depth-word {
+  position: absolute;
+  left: -10%;
+  bottom: 6%;
+  z-index: 999;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(82px, 12vw, 178px);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: rgba(14,13,12,0.08);
+  pointer-events: none;
+  will-change: transform;
+}
+
+
+.about-depth-word2 {
+  position: absolute;
+  left: -22%;
+  bottom: -8%;
+  z-index: 999;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(82px, 12vw, 138px);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: 0;
+  color: rgba(14,13,12,0.09);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.about-orbit-ring {
+  position: absolute;
+  z-index: -2;
+  border: 1px solid rgba(14,13,12,0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.about-ring-one {
+  width: 76%;
+  aspect-ratio: 1;
+  right: -12%;
+  top: -2%;
+}
+
+.about-ring-two {
+  width: 44%;
+  aspect-ratio: 1;
+  left: -8%;
+  bottom: 12%;
+  border-style: dashed;
+}
+
+.about-chip {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid rgba(14,13,12,0.1);
+  border-radius: 999px;
+  background: rgba(250,250,248,0.72);
+  box-shadow: 0 18px 46px rgba(14,13,12,0.12);
+  backdrop-filter: blur(16px);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1c1b19;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.about-chip::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #111;
+}
+
+.about-chip-ux {
+  left: 0;
+  top: 15%;
+}
+
+.about-chip-systems {
+  right: -2%;
+  top: 37%;
+}
+
+.about-chip-research {
+  left: 9%;
+  bottom: 30%;
+}
 
 .about-headline {
   font-family: "Bricolage Grotesque", sans-serif;
@@ -1286,6 +1430,32 @@ footer {
   .parallax-num { font-size: 80px; right: 24px; }
   #about { padding: 80px 24px; grid-template-columns: 1fr; gap: 48px; }
   .about-left { position: static; }
+  .about-portrait {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .about-portrait-frame {
+    inset: 7% 4% 4%;
+    border-radius: 22px;
+  }
+  .about-depth-word {
+    left: -2%;
+    bottom: 6%;
+    font-size: clamp(66px, 24vw, 128px);
+  }
+
+  .about-depth-word2 {
+    left: -4%;
+    bottom: 2%;
+    font-size: clamp(66px, 24vw, 98px);
+  }
+  .about-chip {
+    font-size: 10px;
+    padding: 8px 11px;
+  }
+  .about-chip-ux { left: 0; top: 10%; }
+  .about-chip-systems { right: 0; top: 36%; }
+  .about-chip-research { left: 6%; bottom: 7%; }
   #services { padding: 0 24px 80px; }
   .service-item { grid-template-columns: 40px 1fr; }
   .service-icon { display: none; }
@@ -1589,10 +1759,11 @@ footer {
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section id="about">
+<!-- <section id="about">
   <div class="about-left">
     <div class="about-portrait">
-      <canvas id="portrait-canvas"></canvas>
+       <canvas id="portrait-canvas"></canvas>  
+      <img src="assets/mine.png" width="160%">
     </div>
   </div>
   <div class="about-right">
@@ -1606,6 +1777,48 @@ footer {
       <div class="reveal-up"><div class="stat-num">48+</div><div class="stat-label">Products Delivered</div></div>
       <div class="reveal-up"><div class="stat-num">12yr+</div><div class="stat-label">Experience</div></div>
       <div class="reveal-up"><div class="stat-num">Millions</div><div class="stat-label">Users Impacted</div></div>
+    </div>
+    <div class="skills-list">
+      <span class="skill-tag">Figma</span>
+      <span class="skill-tag">Design systems</span>
+      <span class="skill-tag">User research</span>
+      <span class="skill-tag">Interaction design</span>
+      <span class="skill-tag">Prototyping</span>
+      <span class="skill-tag">A/B testing</span>
+      <span class="skill-tag">Accessibility</span>
+      <span class="skill-tag">Motion</span>
+    </div>
+  </div>
+</section> -->
+
+<section id="about">
+  <div class="about-left">
+    <div class="about-portrait">
+      <span class="about-depth-word">RAHEEL</span>
+      <span class="about-depth-word2">SHEIKH</span>
+      <span class="about-orbit-ring about-ring-one"></span>
+      <span class="about-orbit-ring about-ring-two"></span>
+
+      <div class="about-portrait-frame">
+        <img class="about-portrait-img" src="assets/mine.png" alt="Raheel Sheikh portrait">
+      </div>
+
+      <span class="about-chip about-chip-ux">UX Strategy</span>
+      <span class="about-chip about-chip-systems">Design Systems</span>
+      <span class="about-chip about-chip-research">Interaction Design</span>
+    </div>
+  </div>
+  <div class="about-right">
+    <h2 class="about-headline reveal-up">
+      Turning <em>messy problems</em> into clear products.
+    </h2>
+    <p class="about-body reveal-up">I design products that make complexity disappear.</p>
+    <p class="about-body reveal-up">Starting in brand design and growing into product design taught me that great experiences are rarely accidental. They emerge from thoughtful systems, clear strategy, and hundreds of deliberate decisions users never have to think about.</p>
+    <p class="about-body reveal-up">Over the past 12+ years I've helped shape products used by millions across finance, government, healthcare, and retail. Every project begins with research, because the strongest ideas aren't protected from criticism — they're improved by it.</p>
+    <div class="stats-row">
+      <div class="reveal-up"><div class="stat-num">48+</div><div class="stat-label">Projects shipped</div></div>
+      <div class="reveal-up"><div class="stat-num">12yr+</div><div class="stat-label">In the field</div></div>
+      <div class="reveal-up"><div class="stat-num">12</div><div class="stat-label">Industries</div></div>
     </div>
     <div class="skills-list">
       <span class="skill-tag">Figma</span>
@@ -1696,6 +1909,588 @@ footer {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
+
+
+<script>
+(function () {
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ============================================================
+// PAGE LOADER — typewriter effect
+// ============================================================
+const loaderEl      = document.getElementById('page-loader');
+const headlineEl    = document.getElementById('loader-headline');
+const subEl         = document.getElementById('loader-sub');
+const progressEl    = document.getElementById('loader-progress');
+const statusTextEl  = document.getElementById('loader-status-text');
+
+// The three lines we type, in order.
+// Format: { text, italic: bool, breakBefore: bool }
+const lines = [
+  { text: 'Designed', italic: false },
+  { text: 'for humans,', italic: true },
+  { text: 'not screens.', italic: false },
+];
+
+// Build the DOM structure for the three lines first (empty spans)
+const lineSpans = lines.map((line, i) => {
+  const br   = i > 0 ? document.createElement('br') : null;
+  const span = document.createElement('span');
+  if (line.italic) span.style.cssText = 'font-style:italic;color:#ccc';
+  if (br) headlineEl.appendChild(br);
+  headlineEl.appendChild(span);
+  return span;
+});
+
+// The cursor lives at the end of the last typed character
+const cursor = document.createElement('span');
+cursor.className = 'type-cursor';
+headlineEl.appendChild(cursor);
+
+// Status label cycles
+const statusLabels = ['Initialising', 'Loading assets', 'Almost ready'];
+let statusIdx = 0;
+const statusInterval = setInterval(() => {
+  statusIdx = (statusIdx + 1) % statusLabels.length;
+  statusTextEl.textContent = statusLabels[statusIdx];
+}, 700);
+
+// Typewriter engine
+let lineIndex  = 0;
+let charIndex  = 0;
+let totalChars = lines.reduce((s, l) => s + l.text.length, 0);
+let typedSoFar = 0;
+
+// Speed: fast at first, then slows for the last word (feels deliberate)
+function charDelay() {
+  const pct = typedSoFar / totalChars;
+  if (pct < 0.5)  return 28 + Math.random() * 12;
+  if (pct < 0.85) return 38 + Math.random() * 18;
+  return 55 + Math.random() * 25;
+}
+
+function typeNext() {
+  if (lineIndex >= lines.length) {
+    onTypingComplete();
+    return;
+  }
+
+  const line = lines[lineIndex];
+  if (charIndex < line.text.length) {
+    lineSpans[lineIndex].textContent += line.text[charIndex];
+    charIndex++;
+    typedSoFar++;
+
+    // Update progress bar — maps typing progress to 0–80% of bar
+    progressEl.style.width = (typedSoFar / totalChars * 80) + '%';
+
+    setTimeout(typeNext, charDelay());
+  } else {
+    lineIndex++;
+    charIndex = 0;
+    // Tiny pause between lines
+    setTimeout(typeNext, 160);
+  }
+}
+
+// Small delay then start typing
+setTimeout(typeNext, 380);
+
+function onTypingComplete() {
+  clearInterval(statusInterval);
+  statusTextEl.textContent = 'Ready';
+
+  // Finish progress bar
+  progressEl.style.transition = 'width 0.4s ease';
+  progressEl.style.width = '100%';
+
+  // Show the sub-line
+  subEl.classList.add('visible');
+
+  // Brief pause, then exit
+  setTimeout(exitLoader, 820);
+}
+
+function exitLoader() {
+  // Remove the cursor before exit
+  cursor.style.animation = 'none';
+  cursor.style.opacity   = '0';
+
+  // Slide the whole loader panel up and off screen
+  loaderEl.classList.add('exit');
+
+  loaderEl.addEventListener('transitionend', () => {
+    loaderEl.style.display = 'none';
+    runHeroReveal();
+    setTimeout(() => {
+      document.getElementById('svg-rail').classList.add('show');
+      document.getElementById('rail-label').classList.add('show');
+    }, 600);
+  }, { once: true });
+}
+
+// ============================================================
+// HERO REVEAL — CSS class-based, no extra GSAP needed
+// ============================================================
+function runHeroReveal() {
+  const nav        = document.getElementById('main-nav');
+  const eyebrow    = document.querySelector('.hero-eyebrow');
+  const title      = document.querySelector('.hero-title');
+  const bottom     = document.querySelector('.hero-bottom');
+  const stage      = document.getElementById('hero-stage');
+  const scrollLine = document.getElementById('scroll-line');
+
+  // Stagger via CSS transitions already defined; just add classes with delays
+  nav.classList.add('revealed');
+
+  setTimeout(() => eyebrow.classList.add('revealed'), 80);
+  setTimeout(() => title.classList.add('revealed'),   200);
+  setTimeout(() => stage.classList.add('revealed'),   300);
+  setTimeout(() => bottom.classList.add('revealed'),  460);
+  setTimeout(() => scrollLine.classList.add('revealed'), 620);
+}
+
+// ============================================================
+// HERO PRODUCT WORKSPACE — pointer-responsive CSS animation
+// ============================================================
+const heroStage = document.getElementById('hero-stage');
+const designerOrbit = document.getElementById('designer-orbit');
+
+if (heroStage && designerOrbit) {
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  heroStage.addEventListener('pointermove', e => {
+    const rect = heroStage.getBoundingClientRect();
+    targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+    targetY = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
+  });
+
+  heroStage.addEventListener('pointerleave', () => {
+    targetX = 0;
+    targetY = 0;
+  });
+
+  (function animateHeroWorkspace() {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+    designerOrbit.style.setProperty('--tilt-x', currentX.toFixed(2) + 'deg');
+    designerOrbit.style.setProperty('--tilt-y', currentY.toFixed(2) + 'deg');
+    requestAnimationFrame(animateHeroWorkspace);
+  })();
+}
+
+// ============================================================
+// NAV CTA — immersive hover glow
+// ============================================================
+document.querySelectorAll('.nav-cta').forEach(cta => {
+  cta.addEventListener('pointermove', e => {
+    const rect = cta.getBoundingClientRect();
+    cta.style.setProperty('--cta-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+    cta.style.setProperty('--cta-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+  });
+});
+
+// ============================================================
+// CURSOR
+// ============================================================
+const cursorEl   = document.getElementById('cursor');
+const follower   = document.getElementById('cursor-follower');
+let mx = -200, my = -200, fx = -200, fy = -200;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  gsap.set(cursorEl, { x: mx, y: my });
+});
+
+(function tickFollower() {
+  fx += (mx - fx) * 0.12;
+  fy += (my - fy) * 0.12;
+  gsap.set(follower, { x: fx, y: fy });
+  requestAnimationFrame(tickFollower);
+})();
+
+// ============================================================
+// NAV — sticky glass on scroll
+// ============================================================
+const mainNav = document.getElementById('main-nav');
+ScrollTrigger.create({
+  start: 'top -80',
+  onUpdate: self => {
+    mainNav.classList.toggle('scrolled', self.scroll() > 80);
+  }
+});
+
+// ============================================================
+// THREE.JS BACKGROUND
+// ============================================================
+const bgCanvas   = document.getElementById('bg-canvas');
+const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
+bgRenderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+bgRenderer.setSize(innerWidth, innerHeight);
+
+const bgScene  = new THREE.Scene();
+const bgCamera = new THREE.PerspectiveCamera(140, innerWidth / innerHeight, 0.1, 100);
+bgCamera.position.z = 9;
+
+const pCount = 120;
+const pPos   = new Float32Array(pCount * 3);
+for (let i = 0; i < pCount; i++) {
+  pPos[i*3]   = (Math.random() - 0.9) * 80;
+  pPos[i*3+1] = (Math.random() - 0.5) * 20;
+  pPos[i*3+2] = (Math.random() - 0.5) * 10;
+}
+const pgeo = new THREE.BufferGeometry();
+pgeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+const pmat = new THREE.PointsMaterial({ color: 0x333333, size: 0.46, transparent: true, opacity: 0.14, sizeAttenuation: true });
+const particles = new THREE.Points(pgeo, pmat);
+bgScene.add(particles);
+
+const meshGroup = new THREE.Group();
+bgScene.add(meshGroup);
+[
+  new THREE.TorusGeometry(2.2, 9.01, 1, 48),
+  new THREE.TorusGeometry(8.7, 0.01, 4, 48),
+  new THREE.CircleGeometry(200, 64),
+].forEach((geo, i) => {
+  const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: 0xddccbb, wireframe: true, transparent: true, opacity: 0.5 }));
+  m.position.set((i - 1) * 3, (i % 2 === 0 ? 1 : -1), -3 + i);
+  m.rotation.x = Math.random() * Math.PI;
+  meshGroup.add(m);
+});
+
+let bMouseX = 0, bMouseY = 0;
+document.addEventListener('mousemove', e => {
+  bMouseX = (e.clientX / innerWidth  - 0.5) * 2;
+  bMouseY = (e.clientY / innerHeight - 0.5) * 2;
+});
+
+(function animateBg(t) {
+  requestAnimationFrame(animateBg);
+  const time = t * 0.001;
+  particles.rotation.y  = time * 0.03;
+  particles.rotation.x  = time * 0.015;
+  meshGroup.children.forEach((m, i) => {
+    m.rotation.z = time * (0.1 + i * 0.04);
+    m.rotation.x = time * 0.05 + i * 0.3;
+  });
+  bgCamera.position.x += (bMouseX * 0.3 - bgCamera.position.x) * 0.04;
+  bgCamera.position.y += (-bMouseY * 0.3 - bgCamera.position.y) * 0.04;
+  bgCamera.lookAt(0, 0, 0);
+  bgRenderer.render(bgScene, bgCamera);
+})(0);
+
+window.addEventListener('resize', () => {
+  bgCamera.aspect = innerWidth / innerHeight;
+  bgCamera.updateProjectionMatrix();
+  bgRenderer.setSize(innerWidth, innerHeight);
+});
+
+// ============================================================
+// MARQUEE
+// ============================================================
+function initMarquee(id, speed = 0.9, direction = 'left') {
+
+  const track = document.getElementById(id);
+
+  if (!track) return;
+
+  let pos = 0;
+
+  const clone = track.cloneNode(true);
+
+  track.parentElement.appendChild(clone);
+  track.parentElement.style.display = 'flex';
+
+  function animate() {
+
+    const w = track.offsetWidth;
+
+    if (direction === 'left') {
+
+      pos -= speed;
+
+      if (Math.abs(pos) >= w) {
+        pos = 0;
+      }
+
+      track.style.transform = `translateX(${pos}px)`;
+      clone.style.transform = `translateX(${pos + w}px)`;
+
+    } else {
+
+      pos += speed;
+
+      if (pos >= w) {
+        pos = 0;
+      }
+
+      track.style.transform = `translateX(${pos}px)`;
+      clone.style.transform = `translateX(${pos - w}px)`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+initMarquee('marquee1', 1, 'left');
+initMarquee('marquee2', 0.4, 'left');
+
+
+
+// ============================================================
+// SVG SCROLL RAIL
+// ============================================================
+const railEl   = document.getElementById('svg-rail');
+const railProg = document.getElementById('rail-prog');
+const railDot  = document.getElementById('rail-dot');
+const railLbl  = document.getElementById('rail-label');
+
+const RAIL_H = 400;
+
+const sectionMap = [
+  { el: document.getElementById('hero'),     label: 'Raheel'     },
+  { el: document.getElementById('work'),     label: 'Work'     },
+  { el: document.getElementById('about'),    label: 'About'    },
+  { el: document.getElementById('services'), label: 'Services' },
+  { el: document.getElementById('cta'),      label: 'Contact'  },
+];
+
+window.addEventListener('scroll', updateRail, { passive: true });
+
+function updateRail() {
+  const scrollTop  = window.scrollY;
+  const maxScroll  = document.body.scrollHeight - window.innerHeight;
+  const pct        = Math.min(scrollTop / maxScroll, 1);
+  const drawn      = pct * RAIL_H;
+
+  railProg.setAttribute('stroke-dasharray',  RAIL_H);
+  railProg.setAttribute('stroke-dashoffset', RAIL_H - drawn);
+
+  const dotY = pct * RAIL_H;
+  railDot.setAttribute('cy', dotY);
+
+  const railRect    = railEl.getBoundingClientRect();
+  const dotPxOffset = (dotY / RAIL_H) * railRect.height;
+  railLbl.style.top = (railRect.top + dotPxOffset - 8) + 'px';
+
+  let currentLabel = '';
+  sectionMap.forEach(({ el, label }) => {
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= window.innerHeight * 0.95) currentLabel = label;
+  });
+  railLbl.textContent = currentLabel;
+}
+updateRail();
+
+// ============================================================
+// LAZY REVEAL — .reveal-up elements
+// ============================================================
+document.querySelectorAll('.reveal-up').forEach((el, i) => {
+  gsap.to(el, {
+    opacity: 1,
+    y: 0,
+    duration: 0.85,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 88%',
+      toggleActions: 'play none none none',
+    },
+    delay: (i % 3) * 0.08,
+  });
+});
+
+// ============================================================
+// DEEP PARALLAX
+// ============================================================
+if (document.querySelector('#about .about-portrait')) {
+  gsap.set('.about-portrait-frame', { clipPath: 'inset(10% 8% 10% 8% round 28px)' });
+  gsap.set('.about-chip', { autoAlpha: 0, y: 22 });
+
+  const aboutIntro = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top 78%',
+      toggleActions: 'play none none none',
+    }
+  });
+
+  aboutIntro
+    .to('.about-portrait-frame', {
+      clipPath: 'inset(0% 0% 0% 0% round 28px)',
+      duration: 1.1,
+      ease: 'power3.out'
+    })
+    .to('.about-chip', {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.62,
+      stagger: 0.9,
+      ease: 'back.out(1.45)'
+    }, '-=0.95');
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.1,
+    }
+  })
+    .fromTo('.about-portrait-frame',
+      { yPercent: 11, rotate: -5.2, scale: 0.96 },
+      { yPercent: -1, rotate: 4.2, scale: 1.02, ease: 'none' },
+      0
+    )
+    .fromTo('.about-portrait-img',
+      { yPercent: -8, scale: 1.08 },
+      { yPercent: 9, scale: 1.24, ease: 'none' },
+      0
+    )
+    .fromTo('.about-depth-word',
+      { yPercent: 30, xPercent: -8 },
+      { yPercent: -32, xPercent: 10, ease: 'none' },
+      0
+    )
+    .fromTo('.about-depth-word2',
+      { yPercent: 35, xPercent: -6 },
+      { yPercent: -36, xPercent: 14, ease: 'none' },
+      0
+    )
+    .fromTo('.about-ring-one',
+      { yPercent: 18, rotate: 0 },
+      { yPercent: -20, rotate: 120, ease: 'none' },
+      0
+    )
+    .fromTo('.about-ring-two',
+      { yPercent: -10, rotate: 0 },
+      { yPercent: 24, rotate: -160, ease: 'none' },
+      0
+    )
+    .fromTo('.about-chip-ux',
+      { yPercent: 30, xPercent: -8 },
+      { yPercent: -36, xPercent: 8, ease: 'none' },
+      0
+    )
+    .fromTo('.about-chip-systems',
+      { yPercent: -16, xPercent: 8 },
+      { yPercent: 28, xPercent: -10, ease: 'none' },
+      0
+    )
+    .fromTo('.about-chip-research',
+      { yPercent: 12, xPercent: -6 },
+      { yPercent: -28, xPercent: 7, ease: 'none' },
+      0
+    )
+    .fromTo('.about-right',
+      { yPercent: 7 },
+      { yPercent: -4, ease: 'none' },
+      0
+    );
+}
+
+gsap.fromTo('.cta-title',
+  { y: 60, opacity: 0 },
+  {
+    y: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
+    scrollTrigger: { trigger: '#cta', start: 'top 78%', toggleActions: 'play none none none' }
+  }
+);
+
+document.querySelectorAll('.section-label').forEach(el => {
+  gsap.fromTo(el,
+    { x: -32, opacity: 0 },
+    {
+      x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+document.querySelectorAll('.service-item').forEach((item, i) => {
+  gsap.fromTo(item,
+    { x: -24, opacity: 0 },
+    {
+      x: 0, opacity: 1, duration: 0.7, ease: 'power2.out',
+      delay: i * 0.06,
+      scrollTrigger: { trigger: item, start: 'top 88%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+document.querySelectorAll('.skill-tag').forEach((tag, i) => {
+  gsap.fromTo(tag,
+    { scale: 0.8, opacity: 0 },
+    {
+      scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.6)',
+      delay: i * 0.055,
+      scrollTrigger: { trigger: tag, start: 'top 92%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+document.querySelectorAll('.stat-num').forEach(el => {
+  ScrollTrigger.create({
+    trigger: el, start: 'top 88%', once: true,
+    onEnter: () => gsap.fromTo(el,
+      { y: 24, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'back.out(1.7)' }
+    )
+  });
+});
+
+// ============================================================
+// PARALLAX PROJECTS
+// ============================================================
+document.querySelectorAll('.parallax-project').forEach(project => {
+  const wrap = project.querySelector('.parallax-img-wrap');
+  const img  = project.querySelector('img');
+
+  gsap.fromTo(wrap,
+    { scale: 0.78, borderRadius: '20px' },
+    {
+      scale: 1, borderRadius: '0px', ease: 'none',
+      scrollTrigger: { trigger: project, start: 'top bottom', end: 'top top', scrub: 1 }
+    }
+  );
+
+  gsap.fromTo(wrap,
+    { scale: 1, borderRadius: '0px' },
+    {
+      scale: 0.78, borderRadius: '20px', ease: 'none',
+      scrollTrigger: { trigger: project, start: 'bottom bottom', end: 'bottom top', scrub: 1 }
+    }
+  );
+
+  gsap.fromTo(img,
+    { scale: 1.12 },
+    {
+      scale: 1.0, ease: 'none',
+      scrollTrigger: { trigger: project, start: 'top bottom', end: 'bottom top', scrub: 1 }
+    }
+  );
+
+  ScrollTrigger.create({
+    trigger: project, start: 'top 45%', end: 'bottom 55%',
+    onEnter:      () => project.classList.add('is-active'),
+    onLeave:      () => project.classList.remove('is-active'),
+    onEnterBack:  () => project.classList.add('is-active'),
+    onLeaveBack:  () => project.classList.remove('is-active'),
+  });
+});
+
+})();
+</script>
+
+
+<!-- 
 <script>
 (function () {
 
@@ -2248,6 +3043,6 @@ document.querySelectorAll('.parallax-project').forEach(project => {
 });
 
 })();
-</script>
+</script> -->
 </body>
 </html>
