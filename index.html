@@ -48,7 +48,7 @@ body {
   inset: 0;
   z-index: 99999;
   pointer-events: all;
-  background: linear-gradient(#000,#333);
+  background: linear-gradient(135deg, #0d264c, #265d8c);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -223,7 +223,7 @@ body {
 }
 
 #rail-dot {
-  fill: #999;
+  fill: #e25904;
   transition: cy 0.1s linear;
 }
 
@@ -286,13 +286,13 @@ nav.scrolled {
 }
 
 .nav-logo {
-  font-family: math;
-  font-size: 20px;
-  letter-spacing: 0.06em;
-  color: var(--ink);
+  font-family: 'Bricolage Grotesque';
+  font-size: 30px;
+  letter-spacing: 0.09em;
+  color:#003563;
   text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-weight: 300;
+  text-transform: none;
 }
 
 .nav-links {
@@ -317,7 +317,7 @@ nav.scrolled {
   font-size: 13px;
   font-weight: 500;
   color: white;
-  background: #2f2f2f;
+  background: #003563;
   padding: 10px 22px;
   border-radius: 100px;
   text-decoration: none;
@@ -406,7 +406,7 @@ nav.scrolled {
   transform: translateY(16px);
   transition: opacity 0.8s ease, transform 0s ease;
   position: absolute;
-  top: 65px;
+  top: 68px;
   left: 50px;
 }
 
@@ -439,6 +439,7 @@ h1{
   line-height: 0.8;
   letter-spacing: 0;
   margin-bottom: 0;
+  color: #003563;
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
@@ -457,7 +458,7 @@ h1{
   color: #fafaf8;
   padding: 4px 4px 10px;
   margin: 2px 8px;
-  background: #111;
+  background: #e25904;
   text-transform: uppercase;
   transform: rotate(-1.5deg);
 }
@@ -635,7 +636,7 @@ h4 {
   top: 28px;
   right: 28px;
   height: 34%;
-  background: linear-gradient(135deg, #4b4b4b, #252525);
+  background: linear-gradient(135deg, #003563, #265d8c);
 }
 
 .wire-side {
@@ -736,7 +737,7 @@ h4 {
   align-items: center;
   gap: 10px;
   border-radius: 999px;
-  background: #111;
+  background: #e4600d;
   color: #fafaf8;
   padding: 12px 18px;
   font-size: 12px;
@@ -811,7 +812,7 @@ h4 {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 16px 0;
-  background: linear-gradient(45deg, #000, #333);
+  background: linear-gradient(215deg, #003563, #265d8c);
   transform: rotate(-0.9deg);
 }
 
@@ -830,7 +831,7 @@ h4 {
 
 .marquee-dot {
   width: 10px; height: 10px;
-  border-radius: 50%; background: #666; flex-shrink: 0;
+  border-radius: 50%; background: #fff; flex-shrink: 0;
 }
 
 
@@ -862,7 +863,7 @@ h4 {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 16px 0;
-  background: linear-gradient(45deg, #000, #333);
+  background: linear-gradient(215deg, #003563, #265d8c);
   transform: rotate(-0.5deg);
 }
 
@@ -881,7 +882,7 @@ h4 {
 
 .marquee-dot2 {
   width: 10px; height: 10px;
-  border-radius: 50%; background: #666; flex-shrink: 0;
+  border-radius: 50%; background: #fff; flex-shrink: 0;
 }
 
 /* =============================================
@@ -903,7 +904,7 @@ h4 {
   font-size: 52px;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: #434342;
+  color: #003563;
   margin-bottom: 64px;
   font-family: "Bricolage Grotesque", sans-serif;
 }
@@ -943,7 +944,7 @@ h4 {
 
 .parallax-overlay {
   position: absolute; inset: 0;
-  background: rgba(10,9,8,0.82);
+  background: rgba(0,30,56,0.82);
   backdrop-filter: blur(3px);
   z-index: 2; opacity: 0;
   transition: opacity 0.6s cubic-bezier(0.23,1,0.32,1);
@@ -1202,6 +1203,7 @@ h4 {
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 300; line-height: 1.15;
   margin-bottom: 36px; letter-spacing: -0.01em;
+  color: #003563;
 }
 
 .about-headline em { font-style: italic; color: #8f8f8f; }
@@ -1220,7 +1222,7 @@ h4 {
 
 .stat-num {
   font-family:"Bricolage Grotesque", sans-serif; font-size: 44px;
-  font-weight: 300; line-height: 1; margin-bottom: 6px;
+  font-weight: 300; line-height: 1; margin-bottom: 6px; color: #003563;
 }
 
 .stat-label {
@@ -1256,14 +1258,14 @@ h4 {
 .service-item:hover { padding-left: 16px; transform: translateY(-6px); }
 
 .service-num {
-  font-family: var(--serif); font-size: 14px;
+  font-family: var(--serif); font-size: 44px;
   font-style: italic; color: #ccc; padding-top: 4px;
 }
 
 .service-name {
   font-family: "Bricolage Grotesque", sans-serif;
   font-size: clamp(18px, 3vw, 32px);
-  font-weight: 300; line-height: 1.2; margin-bottom: 10px;letter-spacing: 6px;
+  font-weight: 300; line-height: 1.2; margin-bottom: 10px;letter-spacing: 4px;
 }
 
 .service-desc {
@@ -1296,6 +1298,7 @@ h4 {
   font-size: clamp(56px, 9vw, 120px);
   font-weight: 300; line-height: 0.95;
   letter-spacing: -0.02em; margin-bottom: 48px;
+  color: #003563;
 }
 
 .cta-title em { font-style: italic; color: #ccc; }
@@ -1307,7 +1310,7 @@ h4 {
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
-  background: var(--ink); color: var(--white);
+  background: #003563; color: var(--white);
   padding: 16px 36px; border-radius: 100px;
   font-size: 14px; font-weight: 500;
   text-decoration: none; letter-spacing: 0.03em;
