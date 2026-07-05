@@ -1495,45 +1495,160 @@ h4 {
 /* =============================================
    CTA
    ============================================= */
+
+.headcta{
+  padding: 12px 16px !important;
+  font-size: 12px !important;
+}
 #cta {
   position: relative; z-index: 1;
-  padding: 160px 48px; text-align: center; overflow: hidden;
+  padding: 180px 48px; text-align: center; overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14,13,12,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,13,12,0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 30%), rgba(0,0,0,0.9), transparent 70%);
+  mask-image: radial-gradient(circle 320px at var(--mx, 50%) var(--my, 30%), rgba(0,0,0,0.9), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-status {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.cta-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #2f9e5c;
+  animation: pulse-dot 1.6s ease-in-out infinite;
 }
 
 .cta-title {
+  position: relative;
   font-family: var(--serif);
   font-size: clamp(56px, 9vw, 120px);
   font-weight: 300; line-height: 0.95;
-  letter-spacing: -0.02em; margin-bottom: 48px;
+  letter-spacing: -0.02em; margin-bottom: 56px;
+  transition: transform 0.15s ease-out;
 }
 
 .cta-title em { font-style: italic; color: #ccc; }
 
 .cta-actions {
+  position: relative;
   display: flex; justify-content: center;
   gap: 16px; flex-wrap: wrap;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
+  position: relative;
   display: inline-flex; align-items: center; gap: 10px;
-  background: var(--ink); color: var(--white);
-  padding: 16px 36px; border-radius: 100px;
+  padding: 18px 38px; border-radius: 100px;
   font-size: 14px; font-weight: 500;
   text-decoration: none; letter-spacing: 0.03em;
-  transition: transform 0.2s, background 0.2s;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s ease;
 }
-.btn-primary:hover { transform: translateY(-2px); background: var(--ink2); }
+
+.btn-primary {
+  background: var(--ink); color: var(--white);
+}
 
 .btn-secondary {
-  display: inline-flex; align-items: center; gap: 10px;
   background: transparent; color: var(--ink);
-  padding: 16px 36px; border-radius: 100px;
-  font-size: 14px; font-weight: 400;
-  text-decoration: none; border: 1px solid var(--line);
-  letter-spacing: 0.03em;
-  transition: border-color 0.2s, background 0.2s;
+  border: 1px solid var(--line);
 }
-.btn-secondary:hover { border-color: var(--ink); background: rgba(14,13,12,0.04); }
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 90px at var(--bx, 50%) var(--by, 50%), rgba(255,255,255,0.22), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 18px 40px rgba(14,13,12,0.28);
+}
+
+.btn-secondary:hover {
+  border-color: var(--ink);
+  box-shadow: 0 18px 40px rgba(14,13,12,0.08);
+}
+
+.btn-label {
+  position: relative;
+  display: inline-grid;
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+.btn-label-top,
+.btn-label-bottom {
+  grid-area: 1 / 1;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+
+.btn-label-bottom {
+  transform: translateY(100%);
+}
+
+.btn-primary:hover .btn-label-top,
+.btn-secondary:hover .btn-label-top {
+  transform: translateY(-100%);
+}
+
+.btn-primary:hover .btn-label-bottom,
+.btn-secondary:hover .btn-label-bottom {
+  transform: translateY(0);
+}
+
+.btn-primary svg {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+
+.btn-primary:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  #cta { padding: 100px 24px; }
+  .cta-bg { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-title, .btn-primary, .btn-secondary, .btn-label-top, .btn-label-bottom, .btn-primary svg {
+    transition: none !important;
+  }
+}
 
 /* =============================================
    FOOTER
@@ -1731,7 +1846,17 @@ footer {
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">Let's talk</a>
+   <div class="cta-actions reveal-up">
+    <a href="#cta" class="btn-primary headcta">
+      <span class="btn-label">
+        <span class="btn-label-top">Let's talk</span>
+        <span class="btn-label-bottom">Let's talk</span>
+      </span>
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/>
+  <path d="M4 7l8 6 8-6"/></svg>
+    </a>
+   
+  </div>
   <div class="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </div>
@@ -2245,15 +2370,25 @@ footer {
 
 <!-- ============ CTA ============ -->
 <section id="cta">
-  <h2 class="cta-title reveal-up">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <span class="cta-status"><span class="cta-status-dot"></span>Available for new projects</span>
+  <h2 class="cta-title reveal-up" id="cta-title">
     Have a project<br>in <em>mind?</em>
   </h2>
   <div class="cta-actions reveal-up">
     <a href="mailto:s4raheel@hotmail.com" class="btn-primary">
-      Start a conversation
+      <span class="btn-label">
+        <span class="btn-label-top">Start a conversation</span>
+        <span class="btn-label-bottom">Start a conversation</span>
+      </span>
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="#work" class="btn-secondary">View my work</a>
+    <a href="#work" class="btn-secondary">
+      <span class="btn-label">
+        <span class="btn-label-top">View my work</span>
+        <span class="btn-label-bottom">View my work</span>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -2278,6 +2413,45 @@ footer {
 (function () {
 
 gsap.registerPlugin(ScrollTrigger);
+// ============================================================
+// CTA — cursor-reactive grid, title tilt, button spotlight
+// ============================================================
+const ctaSection = document.getElementById('cta');
+if (ctaSection) {
+  const ctaBg    = ctaSection.querySelector('.cta-bg');
+  const ctaTitle = document.getElementById('cta-title');
+
+  ctaSection.addEventListener('mousemove', e => {
+    const rect = ctaSection.getBoundingClientRect();
+    const px = ((e.clientX - rect.left) / rect.width) * 100;
+    const py = ((e.clientY - rect.top) / rect.height) * 100;
+
+    if (ctaBg) {
+      ctaBg.style.setProperty('--mx', px + '%');
+      ctaBg.style.setProperty('--my', py + '%');
+    }
+
+    if (ctaTitle) {
+      const rx = ((py / 100) - 0.5) * -6;
+      const ry = ((px / 100) - 0.5) * 6;
+      ctaTitle.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    }
+  });
+
+  ctaSection.addEventListener('mouseleave', () => {
+    if (ctaTitle) ctaTitle.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+  });
+
+  ctaSection.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const bx = ((e.clientX - r.left) / r.width) * 100;
+      const by = ((e.clientY - r.top) / r.height) * 100;
+      btn.style.setProperty('--bx', bx + '%');
+      btn.style.setProperty('--by', by + '%');
+    });
+  });
+}
 
 // ============================================================
 // PAGE LOADER — typewriter effect
