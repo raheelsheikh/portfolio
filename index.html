@@ -125,7 +125,7 @@ body {
 }
 
 .ai-card:hover .ai-icon {
-  background: var(--ink);
+  background: #cd2904;
   color: var(--white);
 }
 
@@ -200,7 +200,7 @@ body {
 }
 
 .process-step:hover .process-icon {
-  background: var(--ink); border-color: var(--ink); color: var(--white);
+  background: #cd2904; border-color: none; color: var(--white);
 }
 
 .process-title {
@@ -493,7 +493,7 @@ nav.revealed {
 
 nav.scrolled {
   background: rgb(255 255 255 / 6%);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   padding: 16px 48px;
   border-bottom: 1px solid var(--line);
 }
@@ -1309,7 +1309,7 @@ h4 {
 
 .about-portrait-frame {
   position: absolute;
-  inset: 8% 7% 4%;
+  inset: 1% 7% 4%;
   overflow: hidden;
   border-radius: 28px;
   background:
@@ -1334,20 +1334,18 @@ h4 {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    linear-gradient(180deg, transparent 48%, rgba(14,13,12,0.34)),
-    radial-gradient(circle at 58% 18%, rgba(255,255,255,0.32), transparent 34%);
+  background:linear-gradient(180deg, transparent 8%, rgba(14, 13, 12, 0.34)), radial-gradient(circle at 58% 18%, rgb(63 63 63 / 32%), #00000000 44%);
   pointer-events: none;
 }
 
 .about-portrait-img {
   position: absolute;
-  inset: -8% -8% -4%;
+  inset: -22% -8% -4%;
   width: 116%;
   height: 112%;
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.08);
+  
   will-change: transform;
 }
 
@@ -1357,11 +1355,11 @@ h4 {
   bottom: 6%;
   z-index: 999;
   font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(82px, 12vw, 178px);
+  font-size: clamp(80px, 11vw, 158px);
   font-weight: 800;
   line-height: 0.8;
   letter-spacing: 0;
-  color: rgba(14,13,12,0.08);
+  color: rgb(255 255 255 / 8%);
   pointer-events: none;
   will-change: transform;
 }
@@ -1373,11 +1371,11 @@ h4 {
   bottom: -8%;
   z-index: 999;
   font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(82px, 12vw, 138px);
+  font-size: clamp(82px, 22vw, 128px);
   font-weight: 800;
   line-height: 0.8;
   letter-spacing: 0;
-  color: rgba(14,13,12,0.09);
+  color: rgb(162 162 162 / 14%);
   pointer-events: none;
   will-change: transform;
 }
@@ -2180,12 +2178,12 @@ footer {
       <span class="about-orbit-ring about-ring-two"></span>
 
       <div class="about-portrait-frame">
-        <img class="about-portrait-img" src="assets/mine.png" alt="Raheel Sheikh portrait">
+        <img class="about-portrait-img" src="assets/Raheel Sheikh.PNG" alt="Raheel Sheikh portrait">
       </div>
 
-      <span class="about-chip about-chip-ux">UX Strategy</span>
-      <span class="about-chip about-chip-systems">Design Systems</span>
-      <span class="about-chip about-chip-research">Interaction Design</span>
+      <span class="about-chip about-chip-ux">Product Thinker</span>
+      <span class="about-chip about-chip-systems">AI Explorer</span>
+      <span class="about-chip about-chip-research">Human-Centered Designer</span>
     </div>
   </div>
   <div class="about-right">
@@ -3012,18 +3010,18 @@ if (document.querySelector('#about .about-portrait')) {
       0
     )
     .fromTo('.about-portrait-img',
-      { yPercent: -8, scale: 1.08 },
+      { yPercent: -1, scale: 1.08 },
       { yPercent: 9, scale: 1.24, ease: 'none' },
       0
     )
     .fromTo('.about-depth-word',
-      { yPercent: 30, xPercent: -8 },
-      { yPercent: -32, xPercent: 10, ease: 'none' },
+      { yPercent: 34, xPercent: -10 },
+      { yPercent: -38, xPercent: 40, ease: 'none' },
       0
     )
     .fromTo('.about-depth-word2',
       { yPercent: 35, xPercent: -6 },
-      { yPercent: -36, xPercent: 14, ease: 'none' },
+      { yPercent: -36, xPercent: 104, ease: 'none' },
       0
     )
     .fromTo('.about-ring-one',
